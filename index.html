@@ -205,91 +205,87 @@
 </div>
 
 <script>
-var ES={
-'Home':'Inicio','News':'Noticias','Results':'Resultados','Partners':'Socios','Contact':'Contacto',
-'Discover the Journey':'Descubrir el Camino','Partner With Emmilio':'Se Patrocinador',
-'Partner / Contact':'Patrocinio / Contacto','Send Message':'Enviar Mensaje',
-'Get In Touch':'Contactanos','Lets Build':'Construyamos','Something':'Algo Juntos',
-'Who I Am':'Quien Soy','Driven By':'Impulsado Por','More Than':'Mucho Mas','Speed':'Velocidad',
-'The Story Behind The Driver':'La Historia Detras del Piloto',
-'Born From':'Nacido de','Caracas':'Caracas',
-'Caracas Roots':'Raices Caribenas','Based in Belgium':'Con base en Belgica',
-'Venezuelan in GB4':'Venezolano en GB4',
-'What A Partnership Includes':'Que Incluye una Asociacion',
-'What I Can':'Que Puedo','Do For Your':'Hacer Por Tu','Brand':'Marca',
-'Car & Race Branding':'Branding en el Coche',
-'Social Media Content':'Contenido en Redes Sociales',
-'Race Weekend Videos':'Videos de Carrera',
-'Venezuelan Market Access':'Acceso al Mercado Venezolano',
-'Paddock Hospitality':'Hospitalidad en el Paddock',
-'Long-Term Ambassador':'Embajador a Largo Plazo',
-'Media Coverage':'Cobertura Mediatica','In The':'En Los','Press':'Medios',
-'More coverage coming':'Mas cobertura proximamente',
-'Commercial':'Plataforma','Platform':'Comercial',
-'+ Your Brand Here':'+ Tu Marca Aqui',
-'Latest Updates':'Ultimas Noticias','View All News':'Ver Todas las Noticias',
-'On-Track':'En Pista','Proof Of Performance':'Prueba de Rendimiento',
-'Debut Podium':'Podio de Debut','Fastest Lap':'Vuelta Rapida','Race Fightback':'Remontada',
-'Road So Far':'El Camino Hasta Aqui','Racing':'Historial','Timeline':'de Carreras',
-'First laps in karting':'Primeras vueltas en el karting',
-'Return with intent':'Regreso con determinacion',
-'Ginetta Junior Championship':'Campeonato Ginetta Junior',
-'GB4 Championship':'Campeonato GB4',
-'Name':'Nombre','Email':'Correo','Company':'Empresa','Message':'Mensaje',
-'Silverstone Debut':'Debut Silverstone','Years Old':'Anos',
-'Languages Spoken':'Idiomas','2026 Championship':'Campeonato 2026',
-'Oulton + Fastest Lap':'Oulton + V. Rapida',
-'6 Languages':'6 Idiomas','Venezuela - Italy - Belgium':'Venezuela - Italia - Belgica',
-'P2 GB4 Debut':'P2 Debut GB4','Oulton Podium + Fastest Lap':'Podio Oulton + V. Rapida',
-'Brand Story':'Historia de Marca',
-'Content Engine':'Motor de Contenido',
-'B2B Access':'Acceso B2B',
-'Track Experiences':'Experiencias en Pista',
-'Why Partners Care':'Por Que les Importa a los Socios',
-'More Than':'Mucho Mas','Logo Placement':'Posicionamiento de Logo',
-'Performance System':'Sistema de Rendimiento',
-'Built Like':'Construido Como',
-'A Serious':'Un Proyecto',
-'Project':'Serio'
-}
-function applyES(){
-  document.querySelectorAll('h1,h2,h3,h4,p,a,button,label,span,div,li,th,td').forEach(function(el){
-    if(el.id==='lo')return;
-    if(el.children.length===0){
-      var t=el.textContent.trim();
-      if(ES[t])el.textContent=ES[t];
-    }
-  });
-  document.querySelectorAll('input,textarea').forEach(function(el){
-    if(ES[el.placeholder])el.placeholder=ES[el.placeholder];
-  });
+
+
+<!-- LANGUAGE SELECTOR WITH GOOGLE TRANSLATE -->
+<style>
+#lo{position:fixed;inset:0;z-index:9999;background:#0a0a0a;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.8rem}
+#lo h2{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2rem,6vw,3.5rem);font-weight:900;text-transform:uppercase;color:#fff;text-align:center;line-height:1}
+#lo h2 span{color:#E8162A}
+#lo p{font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.45);text-align:center}
+.lb{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:16px 44px;border-radius:3px;cursor:pointer;border:none;display:inline-block}
+.lb-es{background:#E8162A;color:#fff}
+.lb-en{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.4)}
+#lo .btns{display:flex;gap:1.2rem;flex-wrap:wrap;justify-content:center}
+/* Hide Google's top bar but keep functionality */
+.goog-te-banner-frame{display:none!important}
+body{top:0!important}
+.goog-te-gadget{font-size:0!important}
+.goog-te-gadget img{display:none}
+#google_translate_element{display:none}
+</style>
+
+<div id="lo">
+  <h2>Del Grosso<br><span>Racing</span></h2>
+  <p>Choose your language &nbsp;&middot;&nbsp; Elige tu idioma</p>
+  <div class="btns">
+    <button class="lb lb-es" onclick="pickLang('es')">&#127483; &nbsp;Espa&ntilde;ol</button>
+    <button class="lb lb-en" onclick="pickLang('en')">&#127468;&#127463; &nbsp;English</button>
+  </div>
+</div>
+
+<div id="google_translate_element"></div>
+
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateInit"></script>
+<script>
+function googleTranslateInit(){
+  new google.translate.TranslateElement({
+    pageLanguage:'en',
+    includedLanguages:'es,en',
+    autoDisplay:false
+  },'google_translate_element');
 }
 
 function pickLang(l){
   var o=document.getElementById('lo');
   o.style.opacity='0';
   o.style.pointerEvents='none';
-  setTimeout(function(){o.style.display='none';},420);
-  try{sessionStorage.setItem('lang',l);}catch(e){}
-  if(l==='es')applyES();
+  setTimeout(function(){o.style.display='none';},400);
+  sessionStorage.setItem('lang',l);
+  if(l==='es'){
+    // Trigger Google Translate to Spanish
+    var attempts=0;
+    var interval=setInterval(function(){
+      var select=document.querySelector('.goog-te-combo');
+      if(select){
+        select.value='es';
+        select.dispatchEvent(new Event('change'));
+        clearInterval(interval);
+      }
+      if(++attempts>20) clearInterval(interval);
+    },200);
+  }
 }
 
-// On load: skip overlay if already chosen, re-apply Spanish if needed
+// On page load - skip overlay if already chosen
 (function(){
-  var l;
-  try{l=sessionStorage.getItem('lang');}catch(e){}
+  var l=sessionStorage.getItem('lang');
   if(l){
     var o=document.getElementById('lo');
-    if(o)o.style.display='none';
+    if(o) o.style.display='none';
     if(l==='es'){
-      if(document.readyState==='loading'){
-        document.addEventListener('DOMContentLoaded',applyES);
-      } else {
-        applyES();
-      }
+      var attempts=0;
+      var interval=setInterval(function(){
+        var select=document.querySelector('.goog-te-combo');
+        if(select){
+          select.value='es';
+          select.dispatchEvent(new Event('change'));
+          clearInterval(interval);
+        }
+        if(++attempts>30) clearInterval(interval);
+      },200);
     }
   }
 })();
 </script>
-
 </body></html>
