@@ -684,9 +684,7 @@
     document.title = post.title + ' | Emmilio Valentino Del Grosso';
     document.getElementById('postTitle').innerHTML = escapeHtml(post.title).replace(':', ':<br><em>') + (post.title.includes(':') ? '</em>' : '');
     document.getElementById('postSummary').textContent = post.summary || '';
-    const paragraphs = String(post.body || '').split(/
-\s*
-/).filter(Boolean).map(p => `<p class="lead-text" style="margin-bottom:1.2rem">${escapeHtml(p)}</p>`).join('');
+    const paragraphs = String(post.body || '').split(/\n\s*\n/).filter(Boolean).map(p => `<p class="lead-text" style="margin-bottom:1.2rem">${escapeHtml(p)}</p>`).join('');
     container.innerHTML = `
       <div class="section-eyebrow reveal"><div class="section-label-line"></div><span class="section-label">${escapeHtml(post.badge || 'Update')}</span></div>
       <div class="news-meta" style="margin-bottom:1.5rem">${escapeHtml(formatDate(post.date))}${post.read_time ? ' · ' + escapeHtml(post.read_time) : ''}</div>

@@ -1,0 +1,1 @@
+FIX2: Upload all files from this folder to the top level of your GitHub repo. This fixes article loading and contact redirect. Leave Netlify user roles blank. Then trigger Clear cache and deploy site in Netlify.
