@@ -21,7 +21,18 @@
   }
 })();
 </script>
-</head><body data-page="news"><a href="#main" class="skip-link">Skip to content</a>
+<style>
+[data-es]{display:none}
+html[lang="es"] [data-en]{display:none}
+html[lang="es"] [data-es]{display:revert}
+.lang-switcher{display:flex;gap:.4rem;align-items:center}
+.lang-switcher button{background:none;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.5);font-family:'Barlow Condensed',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;border-radius:2px;cursor:pointer;transition:all .2s}
+.lang-switcher button.active,.lang-switcher button:hover{background:#E8162A;color:#fff;border-color:#E8162A}
+.ven-badge{display:flex;align-items:center;gap:6px;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);border:1px solid rgba(232,22,42,.3);background:rgba(232,22,42,.08);padding:5px 10px;border-radius:2px;text-decoration:none;transition:all .2s;white-space:nowrap}
+.ven-badge:hover{border-color:#E8162A;color:#fff}
+.ven-badge .dot{width:6px;height:6px;border-radius:50%;background:#E8162A;flex-shrink:0;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+</style></head><body data-page="news"><a href="#main" class="skip-link">Skip to content</a>
 <nav aria-label="Main navigation">
   <a href="/" class="nav-logo" data-track="nav_home">Del Grosso<span>Racing</span></a>
   <button class="mobile-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
@@ -32,8 +43,16 @@
     <li><a href="/#partners" data-track="nav_partners">Partners</a></li>
     <li><a href="/#contact" class="nav-cta" data-track="nav_contact">Contact</a></li>
   </ul>
+
+  <div style="display:flex;align-items:center;gap:.8rem;margin-left:auto;padding-left:1rem;">
+    <a href="/#story" class="ven-badge"><span class="dot"></span><span data-en>Venezuelan Story</span><span data-es>Historia Venezolana</span></a>
+    <div class="lang-switcher">
+      <button id="btn-en" onclick="setLang('en')">EN</button>
+      <button id="btn-es" onclick="setLang('es')">ES</button>
+    </div>
+  </div>
 </nav><main id="main">
-<section class="subhero"><img class="subhero-img" src="https://static.wixstatic.com/media/135b3d_6ddc444b315c4c0f8c62827fcef4b04a~mv2.jpg/v1/fill/w_980%2Ch_653%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/135b3d_6ddc444b315c4c0f8c62827fcef4b04a~mv2.jpg" alt="Emmilio podium"><div class="subhero-bg"></div><div class="subhero-content reveal"><div class="eyebrow"><div class="line"></div><span class="eyebrow-text">Updates · Race Reports</span></div><h1>Latest<br><em>News</em></h1><p class="subhero-sub">All official race reports, announcements and progress updates from the Del Grosso Racing journey.</p></div></section>
+<section class="subhero"><img class="subhero-img" src="https://static.wixstatic.com/media/135b3d_6ddc444b315c4c0f8c62827fcef4b04a~mv2.jpg/v1/fill/w_980%2Ch_653%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/135b3d_6ddc444b315c4c0f8c62827fcef4b04a~mv2.jpg" alt="Emmilio podium"><div class="subhero-bg"></div><div class="subhero-content reveal"><div class="eyebrow"><div class="line"></div><span class="eyebrow-text"><span data-en>Updates · Race Reports</span><span data-es>Actualizaciones · Informes de Carrera</span></span></div><h1><span data-en>Latest<br><em>News</em></span><span data-es>Ultimas<br><em>Noticias</em></span></h1><p class="subhero-sub"><span data-en>All official race reports, announcements and progress updates from the Del Grosso Racing journey.</span><span data-es>Todos los informes de carrera, anuncios y actualizaciones del viaje Del Grosso Racing.</span></p></div></section>
 <section class="surface-section"><div class="inner"><div class="news-grid" data-news-grid data-static-fallback="true">
 <a class="news-card reveal" href="/post/venezuelan-podium-at-silverstone-strong-gb4-debut/" data-track="news_card" data-track-label="Venezuelan Podium at Silverstone: Strong GB4 Debut">
   <div class="news-card-img"><img loading="lazy" src="https://static.wixstatic.com/media/135b3d_6ddc444b315c4c0f8c62827fcef4b04a~mv2.jpg/v1/fill/w_980%2Ch_653%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/135b3d_6ddc444b315c4c0f8c62827fcef4b04a~mv2.jpg" alt="Venezuelan Podium at Silverstone: Strong GB4 Debut"></div>
@@ -65,10 +84,26 @@
   <div class="news-card-body"><div class="news-meta">15 Oct 2025 · 1 min read</div><h3>Grinding Through Zandvoort: A Weekend of Progress</h3><p>Progress, composure and fightback pace through a tough Zandvoort weekend.</p><span class="news-badge">Race Report</span></div>
 </a>
 </div></div></section>
-<section class="dark-section"><div class="inner newsletter-box reveal"><div><div class="section-eyebrow"><div class="section-label-line"></div><span class="section-label">Stay Tuned</span></div><h2 class="section-title" style="margin-bottom:.6rem">Get Racing<br><span style="color:var(--red)">Updates</span></h2><p class="lead-text">Join the list for major updates, race results and partnership news.</p></div><form class="newsletter-form" name="newsletter" method="POST" action="/thank-you/" data-netlify="true" netlify-honeypot="bot-field"><input type="hidden" name="form-name" value="newsletter"><p class="hidden"><label>Don’t fill this out: <input name="bot-field"></label></p><label class="sr-only" for="newsletter-email">Email</label><input id="newsletter-email" type="email" name="email" placeholder="Email address" required><button class="btn-primary" type="submit">Sign Up</button><div class="form-message" aria-live="polite"></div></form></div></section>
-</main><a href="/#contact" class="sticky-cta" data-track="sticky_contact">Partner / Contact</a>
+<section class="dark-section"><div class="inner newsletter-box reveal"><div><div class="section-eyebrow"><div class="section-label-line"></div><span class="section-label"><span data-en>Stay Tuned</span><span data-es>Mantente al Dia</span></span></div><h2 class="section-title" style="margin-bottom:.6rem"><span data-en>Get Racing</span><span data-es>Recibe</span><br><span style="color:var(--red)"><span data-en>Updates</span><span data-es>Actualizaciones</span></span></h2><p class="lead-text"><span data-en>Join the list for major updates, race results and partnership news.</span><span data-es>Unete a la lista para actualizaciones importantes, resultados y noticias de socios.</span></p></div><form class="newsletter-form" name="newsletter" method="POST" action="/thank-you/" data-netlify="true" netlify-honeypot="bot-field"><input type="hidden" name="form-name" value="newsletter"><p class="hidden"><label>Don’t fill this out: <input name="bot-field"></label></p><label class="sr-only" for="newsletter-email">Email</label><input id="newsletter-email" type="email" name="email" placeholder="Email address" required><button class="btn-primary" type="submit"><span data-en>Sign Up</span><span data-es>Suscribirse</span></button><div class="form-message" aria-live="polite"></div></form></div></section>
+</main><a href="/#contact" class="sticky-cta" data-track="sticky_contact"><span data-en>Partner / Contact</span><span data-es>Patrocinio / Contacto</span></a>
 <footer>
   <div class="footer-brand">Del Grosso<span>Racing</span></div>
   <div class="footer-copy">© 2026 Emmilio Valentino Del Grosso · delgrossoracing.com</div>
 </footer>
-<script src="/assets/js/main.js" defer></script><script src="/assets/js/news.js" defer></script></body></html>
+<script src="/assets/js/main.js" defer></script><script src="/assets/js/news.js" defer></script>
+<script>
+function setLang(l){
+  document.documentElement.lang = l;
+  var en = document.getElementById('btn-en');
+  var es = document.getElementById('btn-es');
+  if(en) en.classList.toggle('active', l==='en');
+  if(es) es.classList.toggle('active', l==='es');
+  try{ localStorage.setItem('lang', l); }catch(e){}
+}
+(function(){
+  var s; try{ s = localStorage.getItem('lang'); }catch(e){}
+  if(s) setLang(s);
+  else setLang('en');
+})();
+</script>
+</body></html>
