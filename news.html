@@ -111,8 +111,21 @@ function setLang(l){
 </script>
 
 <!--Start of Tawk.to Script-->
+<style>
+/* Move Tawk chat to LEFT so it doesn't cover the Partner/Contact button on the right */
+#tidio-chat, iframe[title*="chat"], .tawk-min-container {
+  left: 1.5rem !important;
+  right: auto !important;
+}
+</style>
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+Tawk_API.customStyle = {
+  visibility: {
+    desktop: { position: 'bl', xOffset: 24, yOffset: 24 },
+    mobile:  { position: 'bl', xOffset: 12, yOffset: 70 }
+  }
+};
 (function(){
 var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
 s1.async=true;
