@@ -181,162 +181,107 @@
   <div class="footer-copy">© 2026 Emmilio Valentino Del Grosso · delgrossoracing.com</div>
 </footer>
 <script src="/assets/js/main.js" defer></script><script src="/assets/js/news.js" defer></script>
-<!-- LANGUAGE SELECTOR OVERLAY -->
+
+
+<!-- LANGUAGE SELECTOR -->
 <style>
-#lang-overlay{position:fixed;inset:0;z-index:9999;background:rgba(10,10,10,0.97);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2rem;opacity:1;transition:opacity .4s}
-#lang-overlay.hidden{opacity:0;pointer-events:none}
-.lang-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.8rem,5vw,3rem);font-weight:800;text-transform:uppercase;color:#fff;text-align:center;letter-spacing:.02em}
-.lang-title span{color:#E8162A}
-.lang-btns{display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center}
-.lang-btn{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:16px 40px;border-radius:3px;cursor:pointer;border:none;transition:transform .15s,background .2s}
-.lang-btn.es{background:#E8162A;color:#fff}
-.lang-btn.en{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.35)}
-.lang-btn:hover{transform:translateY(-2px)}
-.lang-sub{font-size:.8rem;color:rgba(255,255,255,.4);letter-spacing:.1em;text-transform:uppercase;text-align:center}
+#lo{position:fixed;inset:0;z-index:9999;background:#0a0a0a;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.8rem;transition:opacity .4s}
+#lo h2{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2rem,6vw,3.5rem);font-weight:900;text-transform:uppercase;color:#fff;text-align:center;line-height:1}
+#lo h2 span{color:#E8162A}
+#lo p{font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.45);text-align:center}
+.lb{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:16px 44px;border-radius:3px;cursor:pointer;border:none;display:inline-block}
+.lb-es{background:#E8162A;color:#fff}
+.lb-en{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.4)}
+#lo .btns{display:flex;gap:1.2rem;flex-wrap:wrap;justify-content:center}
 </style>
-<div id="lang-overlay">
-  <div class="lang-title">Del Grosso<br><span>Racing</span></div>
-  <p class="lang-sub">Choose your language · Elige tu idioma</p>
-  <div class="lang-btns">
-    <button class="lang-btn es" id="btn-es">🇻🇪 Español</button>
-    <button class="lang-btn en" id="btn-en">🇬🇧 English</button>
+
+<div id="lo">
+  <h2>Del Grosso<br><span>Racing</span></h2>
+  <p>Choose your language &nbsp;·&nbsp; Elige tu idioma</p>
+  <div class="btns">
+    <button class="lb lb-es" onclick="pickLang('es')">🇻🇪 &nbsp;Español</button>
+    <button class="lb lb-en" onclick="pickLang('en')">🇬🇧 &nbsp;English</button>
   </div>
 </div>
+
 <script>
-var ES = {
-  /* NAV */
-  'Home':'Inicio','News':'Noticias','Results':'Resultados','Partners':'Socios','Contact':'Contacto',
-  /* HERO */
-  'Discover the Journey':'Descubrir el Camino',
-  'Partner With Emmilio':'Sé Patrocinador',
-  '16-year-old racing driver. Venezuelan and Italian heritage. Competing in British junior motorsport with one clear direction: Formula 1.':'Piloto de 16 años. Herencia venezolana e italiana. Compitiendo en el automovilismo júnior británico con una dirección clara: la Fórmula 1.',
-  'GB4 Championship · Elite Motorsport':'Campeonato GB4 · Elite Motorsport',
-  /* PROOF PILLS */
-  'P2 GB4 Debut':'P2 Debut GB4',
-  'Oulton Podium + Fastest Lap':'Podio Oulton + Vuelta Rápida',
-  '6 Languages':'6 Idiomas',
-  'Venezuela · Italy · Belgium':'Venezuela · Italia · Bélgica',
-  /* STATS */
-  'Years Old':'Años','Silverstone Debut':'Debut Silverstone','Oulton + Fastest Lap':'Oulton + V. Rápida',
-  '2026 Championship':'Campeonato 2026','Languages Spoken':'Idiomas',
-  /* ABOUT */
-  'Who I Am':'Quién Soy',
-  'Driven By':'Impulsado Por',
-  'More Than':'Mucho Más',
-  'Speed':'Velocidad',
-  'Racing is not just a sport to me. It is the way I express discipline, identity and ambition. I started in karting at six years old, returned stronger after a forced break, and kept building through European karting, Ginetta Juniors and now GB4.':'Las carreras no son solo un deporte para mí. Es la forma en que expreso disciplina, identidad y ambición. Empecé en el karting a los seis años, volví más fuerte tras una pausa forzada y seguí construyendo a través del karting europeo, Ginetta Juniors y ahora GB4.',
-  'Off track, the project is bigger than a helmet and a car. It is a performance story, a Venezuelan story, a European racing story and a platform for brands that want to be part of something early, real and ambitious.':'Fuera de la pista, el proyecto es más grande que un casco y un coche. Es una historia de rendimiento, una historia venezolana, una historia europea del automovilismo y una plataforma para marcas que quieran ser parte de algo real y ambicioso.',
-  'Venezuelan':'Venezolano','Italian':'Italiano','Belgium-based':'Con base en Bélgica',
-  /* RESULTS */
-  'Proof Of Performance':'Prueba de Rendimiento',
-  'On-Track':'En Pista','Results':'Resultados',
-  'Debut Podium':'Podio de Debut',
-  'Immediate front-running pace in the first GB4 race weekend, converting pressure into a statement result.':'Ritmo de vanguardia inmediato en el primer fin de semana GB4, convirtiendo la presión en un resultado contundente.',
-  'Fastest Lap':'Vuelta Rápida',
-  'Podium finish plus fastest lap, showing racecraft and outright speed in a competitive single-seater field.':'Podio más vuelta rápida, demostrando maestría y velocidad en un competitivo campeonato de monoplazas.',
-  'Race Fightback':'Remontada en Carrera',
-  'Strong race pace and recovery drives, including hard fights from difficult grid positions.':'Fuerte ritmo de carrera y remontadas, incluyendo duras batallas desde posiciones difíciles.',
-  /* TIMELINE */
-  'Road So Far':'El Camino Hasta Aquí',
-  'Racing':'Historial',
-  'Timeline':'de Carreras',
-  'First laps in karting':'Primeras vueltas en el karting',
-  'Discovered speed, focus and the feeling that started the whole journey.':'Descubrí la velocidad, la concentración y la sensación que inició todo el viaje.',
-  'Return with intent':'Regreso con determinación',
-  'Returned after a forced break with a clearer mentality and stronger hunger to progress.':'Regresé después de una pausa forzada con una mentalidad más clara y un hambre más fuerte de progresar.',
-  'Ginetta Junior Championship':'Campeonato Ginetta Junior',
-  'First full season in car racing, learning racecraft, engineering communication and close British championship racing.':'Primera temporada completa en el automovilismo, aprendiendo técnica de carrera, comunicación con ingenieros y el competitivo campeonato británico.',
-  'GB4 Championship':'Campeonato GB4',
-  'Step into single-seaters with Elite Motorsport, including podiums and front-running pace.':'Salto a los monoplazas con Elite Motorsport, incluyendo podios y ritmo de vanguardia.',
-  /* NEWS */
-  'Latest Updates':'Últimas Noticias',
-  'Race News':'Noticias de Carrera',
-  'And Stories':'e Historias',
-  'View All News':'Ver Todas las Noticias',
-  /* STORY */
-  'The Story Behind The Driver':'La Historia Detrás del Piloto',
-  'Born From':'Nacido de',
-  'Sacrifice &':'Sacrificio y',
-  'Caracas':'Caracas',
-  'My mother is from Caracas, Venezuela. She left the country at 14 years old — alone, young, and determined — and made her way to Europe. That courage runs in my blood.':'Mi madre es de Caracas, Venezuela. Dejó el país a los 14 años — sola, joven y determinada — y se abrió camino hacia Europa. Ese coraje corre por mi sangre.',
-  'I was born into two worlds. I lived in Venezuela until I was three, then grew up in Belgium, always carrying that Venezuelan fire inside me. My family sacrifices every single day to keep this dream alive. Every lap I drive, I drive for them.':'Nací en dos mundos. Viví en Venezuela hasta los tres años, luego crecí en Bélgica, llevando siempre ese fuego venezolano dentro de mí. Mi familia sacrifica cada día para mantener vivo este sueño. Cada vuelta que doy, la doy por ellos.',
-  'Motorsport in Venezuela has never had a voice at this level. That changes now. When I raise that flag on the podium, it is not just for me — it is for every Venezuelan kid who dares to dream big from a small place.':'El automovilismo en Venezuela nunca ha tenido voz a este nivel. Eso cambia ahora. Cuando levanto esa bandera en el podio, no es solo por mí — es por cada niño venezolano que se atreve a soñar en grande desde un lugar pequeño.',
-  'Caracas Roots':'Raíces Caraqueñas',
-  'Based in Belgium':'Con base en Bélgica',
-  'Venezuelan in GB4':'Venezolano en GB4',
-  /* OFFER */
-  'What A Partnership Includes':'Qué Incluye una Asociación',
-  'What I Can':'Qué Puedo',
-  'Do For Your':'Hacer Por Tu',
-  'Brand':'Marca',
-  'Car & Race Branding':'Branding en el Coche y la Carrera',
-  'Social Media Content':'Contenido en Redes Sociales',
-  'Race Weekend Videos':'Vídeos del Fin de Semana de Carrera',
-  'Venezuelan Market Access':'Acceso al Mercado Venezolano',
-  'Paddock Hospitality':'Hospitalidad en el Paddock',
-  'Long-Term Ambassador':'Embajador a Largo Plazo',
-  /* PRESS */
-  'In The':'En Los',
-  'Press':'Medios',
-  'Media Coverage':'Cobertura Mediática',
-  'More coverage coming':'Más cobertura próximamente',
-  'Media enquiries welcome':'Bienvenidas consultas de medios',
-  /* PARTNERS */
-  'Partner With Emmilio':'Sé Socio de Emmilio',
-  'Commercial':'Plataforma',
-  'Platform':'Comercial',
-  'A partner can use Emmilio for visibility, content, events, storytelling, youth inspiration, business relationship-building and premium motorsport experiences.':'Un socio puede usar a Emmilio para visibilidad, contenido, eventos, storytelling, inspiración juvenil, relaciones comerciales y experiencias premium de automovilismo.',
-  '+ Your Brand Here':'+ Tu Marca Aquí',
-  /* CONTACT */
-  'Get In Touch':'Contáctanos',
-  'Let's Build':'Construyamos',
-  'Something':'Algo Juntos',
-  'For sponsors, media, teams, event opportunities or people who believe in the journey — send a message here. Submissions go directly through Netlify Forms into the site dashboard.':'Para patrocinadores, medios, equipos, oportunidades de eventos o personas que creen en el camino — envíanos un mensaje aquí.',
-  'Name':'Nombre','Email':'Correo electrónico','Company':'Empresa','Message':'Mensaje',
-  'Send Message':'Enviar Mensaje',
-  /* FOOTER */
-  'Partner / Contact':'Patrocinio / Contacto'
+var ES={
+'Home':'Inicio','News':'Noticias','Results':'Resultados','Partners':'Socios','Contact':'Contacto',
+'Discover the Journey':'Descubrir el Camino','Partner With Emmilio':'Sé Patrocinador',
+'Partner / Contact':'Patrocinio / Contacto','Send Message':'Enviar Mensaje',
+'Get In Touch':'Contáctanos','Let's Build':'Construyamos','Something':'Algo Juntos',
+'Who I Am':'Quién Soy','Driven By':'Impulsado Por','More Than':'Mucho Más','Speed':'Velocidad',
+'The Story Behind The Driver':'La Historia Detrás del Piloto',
+'Born From':'Nacido de','Caracas':'Caracas',
+'Caracas Roots':'Raíces Caraqueñas','Based in Belgium':'Con base en Bélgica',
+'Venezuelan in GB4':'Venezolano en GB4',
+'What A Partnership Includes':'Qué Incluye una Asociación',
+'What I Can':'Qué Puedo','Do For Your':'Hacer Por Tu','Brand':'Marca',
+'Car & Race Branding':'Branding en el Coche',
+'Social Media Content':'Contenido en Redes Sociales',
+'Race Weekend Videos':'Vídeos de Carrera',
+'Venezuelan Market Access':'Acceso al Mercado Venezolano',
+'Paddock Hospitality':'Hospitalidad en el Paddock',
+'Long-Term Ambassador':'Embajador a Largo Plazo',
+'Media Coverage':'Cobertura Mediática','In The':'En Los','Press':'Medios',
+'More coverage coming':'Más cobertura próximamente',
+'Partner With Emmilio':'Sé Socio de Emmilio',
+'Commercial':'Plataforma','Platform':'Comercial',
+'+ Your Brand Here':'+ Tu Marca Aquí',
+'Latest Updates':'Últimas Noticias','View All News':'Ver Todas las Noticias',
+'On-Track':'En Pista','Proof Of Performance':'Prueba de Rendimiento',
+'Debut Podium':'Podio de Debut','Fastest Lap':'Vuelta Rápida','Race Fightback':'Remontada',
+'Road So Far':'El Camino Hasta Aquí','Racing':'Historial','Timeline':'de Carreras',
+'First laps in karting':'Primeras vueltas en el karting',
+'Return with intent':'Regreso con determinación',
+'Ginetta Junior Championship':'Campeonato Ginetta Junior',
+'GB4 Championship':'Campeonato GB4',
+'Name':'Nombre','Email':'Correo','Company':'Empresa','Message':'Mensaje',
+'Silverstone Debut':'Debut Silverstone','Years Old':'Años',
+'Languages Spoken':'Idiomas','2026 Championship':'Campeonato 2026',
+'Oulton + Fastest Lap':'Oulton + V. Rápida',
+'6 Languages':'6 Idiomas','Venezuela · Italy · Belgium':'Venezuela · Italia · Bélgica',
+'P2 GB4 Debut':'P2 Debut GB4','Oulton Podium + Fastest Lap':'Podio Oulton + V. Rápida'
 };
 
-document.addEventListener('DOMContentLoaded', function(){
-  var overlay = document.getElementById('lang-overlay');
-  var btnEs = document.getElementById('btn-es');
-  var btnEn = document.getElementById('btn-en');
+function applyES(){
+  document.querySelectorAll('h1,h2,h3,h4,p,a,button,label,span,div,li,th,td').forEach(function(el){
+    if(el.id==='lo')return;
+    if(el.children.length===0){
+      var t=el.textContent.trim();
+      if(ES[t])el.textContent=ES[t];
+    }
+  });
+  document.querySelectorAll('input,textarea').forEach(function(el){
+    if(ES[el.placeholder])el.placeholder=ES[el.placeholder];
+  });
+}
 
-  function applySpanish() {
-    document.querySelectorAll('h1,h2,h3,h4,p,a,button,label,span,div,li').forEach(function(el){
-      if(el.children.length === 0) {
-        var t = el.textContent.trim();
-        if(ES[t]) el.textContent = ES[t];
+function pickLang(l){
+  var o=document.getElementById('lo');
+  o.style.opacity='0';
+  o.style.pointerEvents='none';
+  setTimeout(function(){o.style.display='none';},420);
+  try{sessionStorage.setItem('lang',l);}catch(e){}
+  if(l==='es')applyES();
+}
+
+// On load: skip overlay if already chosen, re-apply Spanish if needed
+(function(){
+  var l;
+  try{l=sessionStorage.getItem('lang');}catch(e){}
+  if(l){
+    var o=document.getElementById('lo');
+    if(o)o.style.display='none';
+    if(l==='es'){
+      if(document.readyState==='loading'){
+        document.addEventListener('DOMContentLoaded',applyES);
+      } else {
+        applyES();
       }
-    });
-    /* inputs */
-    document.querySelectorAll('input[placeholder],textarea[placeholder]').forEach(function(el){
-      if(ES[el.placeholder]) el.placeholder = ES[el.placeholder];
-    });
-    /* select options */
-    document.querySelectorAll('option').forEach(function(el){
-      if(ES[el.textContent.trim()]) el.textContent = ES[el.textContent.trim()];
-    });
-    document.documentElement.lang = 'es';
+    }
   }
-
-  function closeLang(lang) {
-    overlay.style.transition = 'opacity 0.4s';
-    overlay.style.opacity = '0';
-    overlay.style.pointerEvents = 'none';
-    setTimeout(function(){ overlay.style.display = 'none'; }, 400);
-    sessionStorage.setItem('lang', lang);
-    if(lang === 'es') applySpanish();
-  }
-
-  if(sessionStorage.getItem('lang')) {
-    overlay.style.display = 'none';
-    if(sessionStorage.getItem('lang') === 'es') applySpanish();
-  }
-
-  btnEs.addEventListener('click', function(){ closeLang('es'); });
-  btnEn.addEventListener('click', function(){ closeLang('en'); });
-});
+})();
 </script>
+
 </body></html>
