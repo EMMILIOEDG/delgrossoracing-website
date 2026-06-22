@@ -12,16 +12,7 @@
 <link rel="stylesheet" href="/assets/css/styles.css">
 <script src="/assets/js/analytics.js" defer></script>
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
-<script src="/assets/js/identity.js" defer></script>
-<script>
-(function(){
-  var h = window.location.hash || '';
-  if (/(invite_token|confirmation_token|recovery_token|email_change_token|access_token|refresh_token|error)=/i.test(h) && !/^\/admin\/?/.test(window.location.pathname)) {
-    window.location.replace('/admin/' + h);
-  }
-})();
-</script>
-</head><body data-page="post"><a href="#main" class="skip-link">Skip to content</a>
+<script src="/assets/js/identity.js" defer></script></head><body data-page="post"><a href="#main" class="skip-link">Skip to content</a>
 <nav aria-label="Main navigation">
   <a href="/" class="nav-logo" data-track="nav_home">Del Grosso<span>Racing</span></a>
   <button class="mobile-toggle" aria-label="Open menu" aria-expanded="false">☰</button>

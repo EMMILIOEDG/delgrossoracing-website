@@ -1,6 +1,13 @@
 {
-  "ga4_id": "G-XXXXXXXXXX",
+  "site_name": "Del Grosso Racing",
+  "driver_name": "Emmilio Valentino Del Grosso",
+  "contact_email": "emmilioramos08@gmail.com",
+  "instagram": "https://www.instagram.com/emmilio_v",
+  "youtube": "https://www.youtube.com/@Emmilio.Valentino",
+  "facebook": "https://www.facebook.com/share/19t8VqZcwS/",
+  "ga4_id": "",
   "clarity_id": "",
   "meta_pixel_id": "",
-  "contact_email": "emmilioramos2009@gmail.com"
+  "hero_image": "https://static.wixstatic.com/media/135b3d_433afa4271df43b19aa601a6e1c1a0ef~mv2.jpg",
+  "fallback_hero_image": "https://static.wixstatic.com/media/135b3d_96085ac23a264053928eaeddf7fd55a1~mv2.jpeg"
 }

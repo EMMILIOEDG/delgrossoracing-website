@@ -1,0 +1,11 @@
+FINAL TEST CHECKLIST
+
+1. Netlify deploy must complete successfully.
+2. No red “out of credits / deploys disabled” banner.
+3. /news/ shows all six blog cards.
+4. Every blog card opens a full article instantly.
+5. /thank-you/ opens a real branded thank-you page.
+6. Contact form appears in Netlify Forms after form detection + redeploy.
+7. Sending a message redirects to /thank-you/ and creates a Netlify Forms submission.
+8. /admin/ opens Decap CMS after Netlify Identity + Git Gateway are enabled.
+9. Invite links now redirect from homepage to /admin/ automatically.

@@ -1,38 +1,26 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Del Grosso Racing Admin</title>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <style>
+    body{font-family:Arial,sans-serif;background:#0a0a0a;color:#fff;margin:0}.loading{min-height:100vh;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px}.loading h1{margin:0;text-transform:uppercase;letter-spacing:.08em}.loading span{color:#E8162A}
+  </style>
+</head>
+<body>
+  <div class="loading"><h1>Del Grosso <span>Racing</span> Admin</h1><p>Loading editor...</p></div>
   <script>
-    (function () {
-      function hasIdentityToken() {
-        return /(invite_token|confirmation_token|recovery_token|email_change_token)=/.test(window.location.hash || "");
-      }
-      function openIdentityIfNeeded() {
-        if (!window.netlifyIdentity) return;
-        if (hasIdentityToken()) {
-          window.netlifyIdentity.open();
-        }
-      }
+    (function(){
+      var TOKEN_RE = /(invite_token|confirmation_token|recovery_token|email_change_token|access_token|refresh_token|error)=/i;
       if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", function () {
-          openIdentityIfNeeded();
-        });
-        window.netlifyIdentity.on("login", function () {
-          window.netlifyIdentity.close();
-          window.location.href = "/admin/";
-        });
-        window.addEventListener("load", function () {
-          setTimeout(openIdentityIfNeeded, 250);
-          setTimeout(openIdentityIfNeeded, 900);
-        });
+        window.netlifyIdentity.on('init', function(){ if (TOKEN_RE.test(window.location.hash || '')) window.netlifyIdentity.open(); });
+        window.netlifyIdentity.on('login', function(){ window.netlifyIdentity.close(); if (window.location.hash) history.replaceState(null, document.title, '/admin/'); });
+        window.netlifyIdentity.on('signup', function(){ window.netlifyIdentity.close(); if (window.location.hash) history.replaceState(null, document.title, '/admin/'); });
       }
     })();
   </script>
-</head>
-<body>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </body>
 </html>

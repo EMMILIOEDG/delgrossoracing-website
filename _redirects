@@ -1,7 +1,8 @@
-/news /news.html 200
-/news/ /news.html 200
-/post/:slug /post.html 200
-/post/:slug/ /post.html 200
-/thank-you /thank-you.html 200
-/thank-you/ /thank-you.html 200
+/news /news/ 301
+/news/ /news/index.html 200
+/thank-you /thank-you/ 301
+/thank-you/ /thank-you/index.html 200
+/admin /admin/ 301
 /admin/* /admin/index.html 200
+/forms /forms.html 200
+/post/:slug /post/:slug/ 301

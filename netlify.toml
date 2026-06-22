@@ -1,6 +1,57 @@
 [build]
   publish = "."
-  command = ""
 
-[build.processing.html]
-  pretty_urls = true
+[build.processing]
+  skip_processing = false
+
+[[redirects]]
+  from = "/news"
+  to = "/news.html"
+  status = 200
+
+[[redirects]]
+  from = "/news/"
+  to = "/news.html"
+  status = 200
+
+[[redirects]]
+  from = "/post/:slug"
+  to = "/post.html"
+  status = 200
+
+[[redirects]]
+  from = "/post/:slug/"
+  to = "/post.html"
+  status = 200
+
+[[redirects]]
+  from = "/thank-you"
+  to = "/thank-you.html"
+  status = 200
+
+[[redirects]]
+  from = "/thank-you/"
+  to = "/thank-you.html"
+  status = 200
+
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/data/*"
+  [headers.values]
+    Cache-Control = "no-cache"
