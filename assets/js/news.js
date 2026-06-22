@@ -1,73 +1,83 @@
+/* DEL GROSSO RACING — news.js
+   Handles post page: reads slug from URL, finds matching article data,
+   renders it into the page. Falls back to static HTML gracefully. */
+
+var POSTS = {
+  'venezuelan-podium-at-silverstone-strong-gb4-debut': {
+    title: 'Venezuelan Podium at Silverstone: Strong GB4 Debut',
+    date: '27 Apr 2026',
+    readTime: '2 min read',
+    badge: 'GB4 Debut',
+    image: 'https://static.wixstatic.com/media/135b3d_6ddc444b315c4c0f8c62827fcef4b04a~mv2.jpg/v1/fill/w_980%2Ch_653%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/135b3d_6ddc444b315c4c0f8c62827fcef4b04a~mv2.jpg',
+    content: '<p>Emmilio Valentino Del Grosso had an outstanding debut weekend in the GB4 Championship at the iconic Silverstone Circuit.</p><h2>Race 1 — P2</h2><p>A controlled, front-running drive from the very first laps of GB4. Emmilio settled into the rhythm of the car quickly and pushed hard throughout, converting his pace into a P2 finish — a statement result on debut in one of the most competitive junior single-seater series in Britain.</p><h2>Race 2</h2><p>Strong again in Race 2, showing consistency across the weekend. The pace was there from first lap to last.</p><h2>What It Means</h2><p>A podium on debut in GB4 confirms what the team already believed: the transition to single-seaters has been seamless. The work done over the winter with Elite Motorsport is paying off immediately.</p><p>Venezuela had a driver on the podium at Silverstone. That means something.</p>'
+  },
+  'gb4-the-next-step': {
+    title: 'GB4: The Next Step',
+    date: '25 Feb 2026',
+    readTime: '1 min read',
+    badge: 'Announcement',
+    image: 'https://static.wixstatic.com/media/135b3d_dc6db6fb0c0a47c09f45c1a1d04cd1d4~mv2.jpg/v1/fill/w_980%2Ch_653%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/135b3d_dc6db6fb0c0a47c09f45c1a1d04cd1d4~mv2.jpg',
+    content: '<p>I am excited to announce that I will be stepping up into the GB4 Championship for the 2026 season, contesting the series with Elite Motorsport.</p><p>This marks a significant milestone in my racing journey — my first full season in single-seaters after completing the 2025 campaign in the Ginetta Junior Championship. In that season I learned a huge amount, adapted quickly to car racing, and showed consistent pace and improvement.</p><p>Joining the GB4 field is something I have been working toward since the beginning. The series is one of the most competitive junior single-seater championships in Britain. The level is high, the circuits are serious, and the opportunity to show what I can do at the front of the field is real.</p><p>I cannot wait to get started. More to come.</p>'
+  },
+  'donington-the-final-fight': {
+    title: 'Donington: The Final Fight',
+    date: '15 Oct 2025',
+    readTime: '1 min read',
+    badge: 'Race Report',
+    image: 'https://static.wixstatic.com/media/135b3d_9df6b433c29648d08c5cbc0cc299fab9~mv2.jpg/v1/fill/w_980%2Ch_653%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/135b3d_9df6b433c29648d08c5cbc0cc299fab9~mv2.jpg',
+    content: '<p>The final round of the season took us to Donington Park. Practice went well, sitting comfortably inside the top ten and feeling confident with the car.</p><h2>Qualifying</h2><p>Qualifying was tricky. The track was drying, conditions kept changing, and I made a few mistakes that cost us. We ended up P17 for Race 1 and P15 for Race 2. Not ideal, but the race pace was there.</p><h2>Race 1</h2><p>A lot of fun. Hard, clean racing all the way through. Fought forward and showed real progress — gained positions, had good battles, and finished inside the points.</p><h2>Race 2</h2><p>Strong start, gained more positions early. Pushed until the end. A fightback that showed what was possible even from a difficult grid.</p><p>The season is done. There is a lot to take from it — and a lot more to come in 2026.</p>'
+  },
+  'croft-hard-fights-real-progress': {
+    title: 'Croft: Hard Fights, Real Progress',
+    date: '15 Oct 2025',
+    readTime: '1 min read',
+    badge: 'Race Report',
+    image: 'https://static.wixstatic.com/media/135b3d_33fb44adbaee40d79a469457a844d575~mv2.jpg/v1/fill/w_980%2Ch_653%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/135b3d_33fb44adbaee40d79a469457a844d575~mv2.jpg',
+    content: '<p>Croft brought a different challenge — mixed conditions, a new circuit to learn quickly, and a competitive grid across both races.</p><p>The weekend showed real resilience. Despite the tricky conditions, pace was strong and the battles were clean. Progress continued in every session, and the wet-weather performance was a particular highlight — showing adaptability under pressure.</p><p>Every weekend like this adds to the foundation being built. The experience counts.</p>'
+  },
+  'brands-hatch-step-by-step-forward': {
+    title: 'Brands Hatch: Step by Step Forward',
+    date: '15 Oct 2025',
+    readTime: '1 min read',
+    badge: 'Race Report',
+    image: 'https://static.wixstatic.com/media/135b3d_d48f9ef0a7a54db29b516615ca5830f4~mv2.jpg/v1/fill/w_980%2Ch_653%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/135b3d_d48f9ef0a7a54db29b516615ca5830f4~mv2.jpg',
+    content: '<p>Brands Hatch is one of the most iconic circuits in Britain. A tight, technical layout that rewards car control and racecraft — exactly the kind of challenge that sharpens you as a driver.</p><p>Practice showed strong pace from the start. The weekend had learning moments, hard battles through the field, and more steps forward in the development as a driver.</p><p>Every lap at a circuit like Brands Hatch makes you better. The season is building.</p>'
+  },
+  'grinding-through-zandvoort-a-weekend-of-progress': {
+    title: 'Grinding Through Zandvoort: A Weekend of Progress',
+    date: '15 Oct 2025',
+    readTime: '1 min read',
+    badge: 'Race Report',
+    image: 'https://static.wixstatic.com/media/135b3d_41b337e1e18c40d6b31fe38ed2290f66~mv2.jpg/v1/fill/w_980%2Ch_653%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/135b3d_41b337e1e18c40d6b31fe38ed2290f66~mv2.jpg',
+    content: '<p>Zandvoort is a challenging circuit — high-speed, technical, unforgiving at the limit. The kind of track that exposes any weakness and rewards total commitment.</p><p>The weekend had its moments of difficulty, but the composure shown through both races was the real story. Staying clean, making moves when the opportunity came, and bringing the car home in a better position than where it started.</p><p>Progress. That is what this season is about.</p>'
+  }
+};
+
 (function(){
-  function esc(v){return String(v == null ? '' : v).replace(/[&<>'"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c];});}
-  function formatDate(value){ if(!value) return ''; var d=new Date(value+'T00:00:00'); if(isNaN(d.getTime())) return value; return d.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}); }
-  function postUrl(post){ return '/post/' + encodeURIComponent(post.slug || '') + '/'; }
-  function card(post){
-    return '<a class="news-card reveal" href="'+esc(postUrl(post))+'" data-track="news_card" data-track-label="'+esc(post.title)+'">'+
-      '<div class="news-card-img"><img loading="lazy" src="'+esc(post.image)+'" alt="'+esc(post.title)+'"></div>'+
-      '<div class="news-card-body"><div class="news-meta">'+esc(formatDate(post.date))+(post.read_time?' · '+esc(post.read_time):'')+'</div><h3>'+esc(post.title)+'</h3><p>'+esc(post.summary)+'</p>'+(post.badge?'<span class="news-badge">'+esc(post.badge)+'</span>':'')+'</div></a>';
-  }
-  function simpleMarkdown(md){
-    md = String(md || '').replace(/\r\n/g,'\n');
-    var blocks = md.split(/\n\s*\n/).filter(function(b){return b.trim();});
-    return blocks.map(function(b){
-      var t=b.trim();
-      if (/^###\s+/.test(t)) return '<h3>'+esc(t.replace(/^###\s+/,''))+'</h3>';
-      if (/^##\s+/.test(t)) return '<h2>'+esc(t.replace(/^##\s+/,''))+'</h2>';
-      if (/^>\s?/.test(t)) return '<blockquote>'+esc(t.replace(/^>\s?/,''))+'</blockquote>';
-      if (/^-\s+/m.test(t) && t.split('\n').every(function(line){return /^-\s+/.test(line.trim());})) {
-        return '<ul>'+t.split('\n').map(function(line){return '<li>'+esc(line.replace(/^-\s+/,''))+'</li>';}).join('')+'</ul>';
+  // POST PAGE: render article from URL slug
+  var postContainer = document.querySelector('[data-post-container]');
+  if(postContainer){
+    var parts = window.location.pathname.replace(/\/$/, '').split('/');
+    var slug = parts[parts.length - 1];
+    var post = POSTS[slug];
+    if(post){
+      // Update title
+      var titleEl = document.getElementById('postTitle');
+      if(titleEl){
+        var words = post.title.split(' ');
+        var half = Math.ceil(words.length / 2);
+        titleEl.innerHTML = words.slice(0,half).join(' ') + '<br><em>' + words.slice(half).join(' ') + '</em>';
       }
-      t = esc(t).replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/  \n/g,'<br>').replace(/\n/g,'<br>');
-      return '<p>'+t+'</p>';
-    }).join('');
-  }
-  async function getPosts(){
-    var res = await fetch('/data/news.json', {cache:'no-store'}); if(!res.ok) throw new Error('Could not load news');
-    var data = await res.json(); var posts = Array.isArray(data.posts) ? data.posts : [];
-    return posts.sort(function(a,b){return String(b.date || '').localeCompare(String(a.date || ''));});
-  }
-  async function renderList(){
-    var grids = document.querySelectorAll('[data-news-grid]'); if(!grids.length) return;
-    try{
-      var posts = await getPosts();
-      grids.forEach(function(grid){ var limit = Number(grid.dataset.limit || posts.length); grid.innerHTML = posts.slice(0,limit).map(card).join(''); });
-      if (window.DGR && window.DGR.initReveal) window.DGR.initReveal();
-    }catch(e){
-      grids.forEach(function(grid){ if (!grid.children.length) grid.innerHTML = '<div class="card"><h3>News could not load.</h3><p>Please refresh the page.</p></div>'; });
-    }
-  }
-  function slugFromLocation(){
-    var qs = new URLSearchParams(window.location.search); if(qs.get('slug')) return qs.get('slug');
-    var parts = window.location.pathname.split('/').filter(Boolean); var last = parts[parts.length-1] || '';
-    if(last === 'post') return ''; return decodeURIComponent(last || '');
-  }
-  function splitTitle(title){
-    var safe=esc(title || 'Article');
-    if (safe.indexOf(':') > -1) { var i=safe.indexOf(':'); return safe.slice(0,i+1)+'<br><em>'+safe.slice(i+1).trim()+'</em>'; }
-    var words=safe.split(' '); if(words.length>2){return words.slice(0,-2).join(' ')+'<br><em>'+words.slice(-2).join(' ')+'</em>';}
-    return safe;
-  }
-  async function renderPost(){
-    var container = document.querySelector('[data-post-container]'); if(!container) return;
-    var titleEl = document.getElementById('postTitle'); var summaryEl = document.getElementById('postSummary'); var imgEl = document.getElementById('postHeroImage');
-    try{
-      var slug = slugFromLocation(); var posts = await getPosts();
-      var post = posts.find(function(p){return p.slug === slug;}) || posts[0];
-      if(!post) throw new Error('No post');
+      // Update summary / date
+      var summaryEl = document.getElementById('postSummary');
+      if(summaryEl) summaryEl.textContent = post.date + ' · ' + post.readTime;
+      // Update hero image
+      var imgEl = document.getElementById('postHeroImage');
+      if(imgEl && post.image){ imgEl.src = post.image; imgEl.alt = post.title; imgEl.classList.remove('hidden'); }
+      // Update page title
       document.title = post.title + ' | Del Grosso Racing';
-      if(titleEl) titleEl.innerHTML = splitTitle(post.title);
-      if(summaryEl) summaryEl.textContent = post.summary || '';
-      if(imgEl) { imgEl.src = post.image; imgEl.alt = post.title; imgEl.classList.remove('hidden'); }
-      container.innerHTML = '<div class="section-eyebrow reveal"><div class="section-label-line"></div><span class="section-label">'+esc(post.badge || 'Update')+'</span></div>'+
-        '<div class="news-meta">'+esc(formatDate(post.date))+(post.read_time?' · '+esc(post.read_time):'')+'</div>'+
-        '<div class="article-body">'+simpleMarkdown(post.body)+'</div><br><a href="/news/" class="btn-red-outline">Back To News</a>';
-      if(window.DGR && window.DGR.initReveal) window.DGR.initReveal();
-    }catch(e){
-      if(titleEl) titleEl.innerHTML='Article<br><em>Not Found</em>';
-      if(summaryEl) summaryEl.textContent='Go back to the news page and choose another update.';
-      container.innerHTML = '<h2 class="section-title">Article Not Found</h2><p class="lead-text">The article could not load. Try refreshing or return to the news page.</p><br><a href="/news/" class="btn-red-outline">Back To News</a>';
+      // Render content
+      postContainer.innerHTML = '<div class="news-meta">' + post.date + ' · ' + post.readTime + '</div>' + post.content;
     }
   }
-  document.addEventListener('DOMContentLoaded', function(){ renderList(); renderPost(); });
 })();
