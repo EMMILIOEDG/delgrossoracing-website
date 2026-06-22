@@ -616,6 +616,23 @@
 
 <script src="/assets/js/analytics.js" defer></script>
 
+
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", function(user) {
+      var hash = window.location.hash || "";
+      if (!user && /(confirmation_token|invite_token|recovery_token|email_change_token)/.test(hash)) {
+        window.netlifyIdentity.open();
+      }
+    });
+    window.netlifyIdentity.on("login", function() {
+      if (window.location.pathname !== "/admin/" && window.location.pathname !== "/admin") {
+        document.location.href = "/admin/";
+      }
+    });
+  }
+</script>
 </head>
 
 <body data-page="home">
@@ -837,7 +854,7 @@
       </div>
 
       <div class="form-wrap">
-        <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html">
+        <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you">
           <input type="hidden" name="form-name" value="contact">
           <p style="display:none"><label>Do not fill this out: <input name="bot-field"></label></p>
           <div class="form-grid">
