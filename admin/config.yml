@@ -1,0 +1,41 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "site_settings"
+    label: "Site Settings"
+    files:
+      - label: "Tracking & Contact"
+        name: "tracking_contact"
+        file: "data/site.json"
+        fields:
+          - {label: "Google Analytics 4 ID", name: "ga4_id", widget: "string", required: false, hint: "Example: G-ABC123DEFG"}
+          - {label: "Microsoft Clarity ID", name: "clarity_id", widget: "string", required: false}
+          - {label: "Meta Pixel ID", name: "meta_pixel_id", widget: "string", required: false}
+          - {label: "Contact Email", name: "contact_email", widget: "string", required: false}
+
+  - name: "news"
+    label: "News Page"
+    files:
+      - label: "News Posts"
+        name: "news_posts"
+        file: "data/news.json"
+        fields:
+          - label: "Posts"
+            name: "posts"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Slug", name: "slug", widget: "string", hint: "Use lowercase with hyphens, e.g. silverstone-podium"}
+              - {label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD"}
+              - {label: "Read Time", name: "read_time", widget: "string", required: false, default: "2 min read"}
+              - {label: "Badge", name: "badge", widget: "string", required: false, default: "Race Report"}
+              - {label: "Summary", name: "summary", widget: "text"}
+              - {label: "Image URL", name: "image", widget: "string", hint: "Paste a Wix/static image URL or uploaded image path."}
+              - {label: "External Link", name: "link", widget: "string", required: false, hint: "Leave empty to use the built-in article page."}
+              - {label: "Article Body", name: "body", widget: "text", required: false, hint: "Use blank lines between paragraphs."}
