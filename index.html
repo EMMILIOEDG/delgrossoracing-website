@@ -198,39 +198,53 @@
   <div class="lang-title">Del Grosso<br><span>Racing</span></div>
   <p class="lang-sub">Choose your language · Elige tu idioma</p>
   <div class="lang-btns">
-    <button class="lang-btn es" onclick="setLang('es')">🇻🇪 Español</button>
-    <button class="lang-btn en" onclick="setLang('en')">🇬🇧 English</button>
+    <button class="lang-btn es" id="btn-es">🇻🇪 Español</button>
+    <button class="lang-btn en" id="btn-en">🇬🇧 English</button>
   </div>
 </div>
 <script>
-(function(){
-  // Show overlay unless already chosen this session
-  if(!sessionStorage.getItem('lang')){
-    document.getElementById('lang-overlay').classList.remove('hidden');
+document.addEventListener('DOMContentLoaded', function(){
+  var overlay = document.getElementById('lang-overlay');
+  var btnEs = document.getElementById('btn-es');
+  var btnEn = document.getElementById('btn-en');
+
+  function closeLang(lang) {
+    overlay.style.opacity = '0';
+    overlay.style.pointerEvents = 'none';
+    setTimeout(function(){ overlay.style.display = 'none'; }, 400);
+    sessionStorage.setItem('lang', lang);
+    if(lang === 'es') {
+      var swaps = {
+        'Discover the Journey': 'Descubrir el Camino',
+        'Partner With Emmilio': 'Sé Patrocinador',
+        'Partner / Contact': 'Patrocinio / Contacto',
+        'Send Message': 'Enviar Mensaje',
+        'Get In Touch': 'Contáctanos',
+        'Who I Am': 'Quién Soy',
+        'The Story Behind The Driver': 'La Historia Detrás del Piloto',
+        'In The Press': 'En Los Medios',
+        'Latest Updates': 'Últimas Noticias',
+        'View All News': 'Ver Todas las Noticias',
+        'Name': 'Nombre',
+        'Email': 'Correo',
+        'Company': 'Empresa',
+        'Message': 'Mensaje'
+      };
+      document.querySelectorAll('h1,h2,h3,p,a,button,label,span,div').forEach(function(el){
+        if(el.children.length === 0) {
+          var t = el.textContent.trim();
+          if(swaps[t]) el.textContent = swaps[t];
+        }
+      });
+    }
   }
-})();
-function setLang(l){
-  sessionStorage.setItem('lang','en'); // always serve English for now
-  var o=document.getElementById('lang-overlay');
-  o.classList.add('hidden');
-  setTimeout(function(){o.remove();},500);
-  if(l==='es'){
-    // Spanish: swap key visible text
-    var swaps={
-      'Discover the Journey':'Descubrir el Camino',
-      'Partner With Emmilio':'Sé Patrocinador',
-      'Partner / Contact':'Patrocinio / Contacto',
-      'Send Message':'Enviar Mensaje',
-      'Let's Build':'Construyamos',
-      'Get In Touch':'Contáctanos'
-    };
-    document.querySelectorAll('*').forEach(function(el){
-      if(el.childNodes.length===1&&el.childNodes[0].nodeType===3){
-        var t=el.textContent.trim();
-        if(swaps[t])el.textContent=swaps[t];
-      }
-    });
+
+  if(sessionStorage.getItem('lang')) {
+    overlay.style.display = 'none';
   }
-}
+
+  btnEs.addEventListener('click', function(){ closeLang('es'); });
+  btnEn.addEventListener('click', function(){ closeLang('en'); });
+});
 </script>
 </body></html>
