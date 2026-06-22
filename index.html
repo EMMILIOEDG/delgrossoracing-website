@@ -1,271 +1,520 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js"><head>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Emmilio Valentino Del Grosso | Del Grosso Racing</title>
-<meta name="description" content="Official racing website of Emmilio Valentino Del Grosso: GB4 driver, race results, news, partners and contact.">
-<meta property="og:title" content="Emmilio Valentino Del Grosso | Del Grosso Racing">
-<meta property="og:description" content="Official racing website of Emmilio Valentino Del Grosso: GB4 driver, race results, news, partners and contact.">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://static.wixstatic.com/media/135b3d_6ddc444b315c4c0f8c62827fcef4b04a~mv2.jpg/v1/fill/w_980%2Ch_653%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/135b3d_6ddc444b315c4c0f8c62827fcef4b04a~mv2.jpg">
+<title>Emmilio Valentino Del Grosso | GB4 Racing Driver</title>
+<meta name="description" content="Official website of Emmilio Valentino Del Grosso. GB4 Championship driver with Elite Motorsport. Venezuelan and Italian heritage. Competing in British junior motorsport.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Barlow:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/styles.css">
 <script src="/assets/js/analytics.js" defer></script>
-<script src="/assets/js/identity.js" defer></script>
 <style>
-#lo{position:fixed;inset:0;z-index:9999;background:#0a0a0a;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.8rem}
-#lo h2{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2rem,6vw,3.5rem);font-weight:900;text-transform:uppercase;color:#fff;text-align:center;line-height:1}
-#lo h2 span{color:#E8162A}
-#lo p{font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.45);text-align:center}
-.lb{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:16px 44px;border-radius:3px;cursor:pointer;border:none;display:inline-block}
-.lb-es{background:#E8162A;color:#fff}
-.lb-en{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.4)}
-#lo .btns{display:flex;gap:1.2rem;flex-wrap:wrap;justify-content:center}
-.goog-te-banner-frame,.goog-te-balloon-frame{display:none!important}
-body{top:0!important;position:static!important}
-#google_translate_element{display:none}
+/* ===== LANGUAGE SYSTEM ===== */
+[data-es] { display: none; }
+html[lang="es"] [data-en] { display: none; }
+html[lang="es"] [data-es] { display: revert; }
+
+/* ===== LANG OVERLAY ===== */
+#lang-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  background: #0a0a0a;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 2rem;
+}
+#lang-overlay h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(2.5rem, 7vw, 4rem);
+  font-weight: 900; text-transform: uppercase;
+  color: #fff; text-align: center; line-height: 1;
+}
+#lang-overlay h2 span { color: #E8162A; }
+#lang-overlay p {
+  font-size: .75rem; letter-spacing: .18em;
+  text-transform: uppercase; color: rgba(255,255,255,.4);
+  text-align: center;
+}
+.lang-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+.lang-btn {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.1rem; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  padding: 16px 40px; border-radius: 3px;
+  cursor: pointer; border: none;
+  transition: transform .15s, opacity .15s;
+}
+.lang-btn:hover { transform: translateY(-2px); opacity: .9; }
+.lang-btn.es { background: #E8162A; color: #fff; }
+.lang-btn.en { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,.4); }
+
+/* ===== LANG SWITCHER IN NAV ===== */
+.lang-switcher {
+  display: flex; gap: .4rem; align-items: center;
+  margin-left: 1.5rem;
+}
+.lang-switcher button {
+  background: none; border: 1px solid rgba(255,255,255,.2);
+  color: rgba(255,255,255,.5); font-family: 'Barlow Condensed', sans-serif;
+  font-size: .7rem; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; padding: 4px 8px; border-radius: 2px;
+  cursor: pointer; transition: all .2s;
+}
+.lang-switcher button.active,
+.lang-switcher button:hover {
+  background: #E8162A; color: #fff; border-color: #E8162A;
+}
+
+/* ===== VENEZUELA NAV BADGE ===== */
+.ven-badge {
+  display: flex; align-items: center; gap: 6px;
+  font-size: .68rem; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: rgba(255,255,255,.6);
+  border: 1px solid rgba(232,22,42,.3);
+  background: rgba(232,22,42,.08);
+  padding: 5px 10px; border-radius: 2px;
+  text-decoration: none; transition: all .2s;
+  white-space: nowrap;
+}
+.ven-badge:hover { border-color: #E8162A; color: #fff; background: rgba(232,22,42,.15); }
+.ven-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: #E8162A; flex-shrink: 0; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:.3;} }
 </style>
 </head>
-<body data-page="home">
+<body>
 
-<!-- LANGUAGE OVERLAY -->
-<div id="lo">
+<!-- ===== LANGUAGE OVERLAY ===== -->
+<div id="lang-overlay">
   <h2>Del Grosso<br><span>Racing</span></h2>
   <p>Choose your language &middot; Elige tu idioma</p>
-  <div class="btns">
-    <button class="lb lb-es" onclick="pickLang('es')">&#127483; Espanol</button>
-    <button class="lb lb-en" onclick="pickLang('en')">&#127468;&#127463; English</button>
+  <div class="lang-btns">
+    <button class="lang-btn es" onclick="setLang('es')">&#127483; Espa&ntilde;ol</button>
+    <button class="lang-btn en" onclick="setLang('en')">&#127468;&#127463; English</button>
   </div>
 </div>
-<div id="google_translate_element"></div>
-<script src="//translate.google.com/translate_a/element.js?cb=gtInit"></script>
-<script>
-function gtInit(){
-  new google.translate.TranslateElement({pageLanguage:'en',includedLanguages:'es,en',autoDisplay:false},'google_translate_element');
-}
-function doES(){
-  var t=setInterval(function(){
-    var s=document.querySelector('.goog-te-combo');
-    if(s){s.value='es';s.dispatchEvent(new Event('change'));clearInterval(t);}
-  },200);
-  setTimeout(function(){clearInterval(t);},8000);
-}
-function pickLang(l){
-  document.getElementById('lo').style.display='none';
-  localStorage.setItem('siteLang',l);
-  if(l==='es') doES();
-}
-(function(){
-  var l=localStorage.getItem('siteLang');
-  if(l){
-    document.getElementById('lo').style.display='none';
-    if(l==='es') window.addEventListener('load',function(){setTimeout(doES,500);});
-  }
-})();
-</script>
 
-<a href="#main" class="skip-link">Skip to content</a>
+<!-- ===== NAV ===== -->
 <nav aria-label="Main navigation">
-  <a href="/" class="nav-logo" data-track="nav_home">Del Grosso<span>Racing</span></a>
+  <a href="/" class="nav-logo">Del Grosso<span>Racing</span></a>
   <button class="mobile-toggle" aria-label="Open menu" aria-expanded="false">&#9776;</button>
   <ul class="nav-links">
-    <li><a href="/" class="active" data-track="nav_home">Home</a></li>
-    <li><a href="/news/" data-track="nav_news">News</a></li>
-    <li><a href="/#results" data-track="nav_results">Results</a></li>
-    <li><a href="/#partners" data-track="nav_partners">Partners</a></li>
-    <li><a href="/#contact" class="nav-cta" data-track="nav_contact">Contact</a></li>
+    <li><a href="/" class="active">
+      <span data-en>Home</span><span data-es>Inicio</span>
+    </a></li>
+    <li><a href="/news/">
+      <span data-en>News</span><span data-es>Noticias</span>
+    </a></li>
+    <li><a href="/#results">
+      <span data-en>Results</span><span data-es>Resultados</span>
+    </a></li>
+    <li><a href="/#partners">
+      <span data-en>Partners</span><span data-es>Socios</span>
+    </a></li>
+    <li><a href="/#contact" class="nav-cta">
+      <span data-en>Contact</span><span data-es>Contacto</span>
+    </a></li>
   </ul>
+  <div style="display:flex;align-items:center;gap:.8rem;margin-left:auto;padding-left:1.5rem;">
+    <a href="/#story" class="ven-badge">
+      <span class="dot"></span>
+      <span data-en>Venezuelan Story</span>
+      <span data-es>Historia Venezolana</span>
+    </a>
+    <div class="lang-switcher">
+      <button id="btn-en" onclick="setLang('en')">EN</button>
+      <button id="btn-es" onclick="setLang('es')">ES</button>
+    </div>
+  </div>
 </nav>
 
 <main id="main">
 
-<!-- HERO -->
+<!-- ===== HERO ===== -->
 <section class="hero">
-  <img class="hero-img" src="/assets/hero.jpeg" alt="Emmilio Del Grosso P2 podium Silverstone GB4 Venezuelan flag">
+  <img class="hero-img" src="/assets/hero.jpeg" alt="Emmilio Del Grosso P2 podium Silverstone GB4">
   <div class="hero-bg"></div>
   <div class="hero-content reveal">
-    <div class="eyebrow"><div class="line"></div><span class="eyebrow-text">GB4 Championship &middot; Elite Motorsport</span></div>
+    <div class="eyebrow"><div class="line"></div>
+      <span class="eyebrow-text">GB4 Championship &middot; Elite Motorsport</span>
+    </div>
     <h1>Emmilio<br>Valentino<br><em>Del Grosso</em></h1>
-    <p class="hero-sub">16-year-old racing driver. Venezuelan and Italian heritage. Competing in British junior motorsport with one clear direction: Formula 1.</p>
-    <div class="hero-actions"><a href="#about" class="btn-primary">Discover the Journey</a><a href="#partners" class="btn-outline">Partner With Emmilio</a></div>
+    <p class="hero-sub" data-en>16-year-old racing driver. Venezuelan and Italian heritage. Competing in British junior motorsport with one clear direction: Formula 1.</p>
+    <p class="hero-sub" data-es>Piloto de 16 anos. Herencia venezolana e italiana. Compitiendo en el automovilismo junior britanico con una direccion clara: la Formula 1.</p>
+    <div class="hero-actions">
+      <a href="#about" class="btn-primary">
+        <span data-en>Discover the Journey</span>
+        <span data-es>Descubrir el Camino</span>
+      </a>
+      <a href="#partners" class="btn-outline">
+        <span data-en>Partner With Emmilio</span>
+        <span data-es>Se Patrocinador</span>
+      </a>
+    </div>
     <div class="proof-strip">
-      <div class="proof-pill">P2 GB4 Debut</div>
-      <div class="proof-pill">Oulton Podium + Fastest Lap</div>
-      <div class="proof-pill">6 Languages</div>
+      <div class="proof-pill">P2 GB4 <span data-en>Debut</span><span data-es>Debut</span></div>
+      <div class="proof-pill"><span data-en>Oulton Podium + Fastest Lap</span><span data-es>Podio Oulton + Vuelta Rapida</span></div>
+      <div class="proof-pill">6 <span data-en>Languages</span><span data-es>Idiomas</span></div>
       <div class="proof-pill">Venezuela &middot; Italy &middot; Belgium</div>
     </div>
   </div>
 </section>
 
-<!-- STATS BAR -->
+<!-- ===== STATS BAR ===== -->
 <div class="stats-bar"><div class="stats-inner">
-  <div class="stat-item"><div class="stat-number">16</div><div class="stat-label">Years Old</div></div>
-  <div class="stat-item"><div class="stat-number">P2</div><div class="stat-label">Silverstone Debut</div></div>
-  <div class="stat-item"><div class="stat-number">P3</div><div class="stat-label">Oulton + Fastest Lap</div></div>
-  <div class="stat-item"><div class="stat-number">GB4</div><div class="stat-label">2026 Championship</div></div>
-  <div class="stat-item"><div class="stat-number">6</div><div class="stat-label">Languages Spoken</div></div>
+  <div class="stat-item"><div class="stat-number">16</div><div class="stat-label"><span data-en>Years Old</span><span data-es>Anos</span></div></div>
+  <div class="stat-item"><div class="stat-number">P2</div><div class="stat-label"><span data-en>Silverstone Debut</span><span data-es>Debut Silverstone</span></div></div>
+  <div class="stat-item"><div class="stat-number">P3</div><div class="stat-label"><span data-en>Oulton + Fastest Lap</span><span data-es>Oulton + V.Rapida</span></div></div>
+  <div class="stat-item"><div class="stat-number">GB4</div><div class="stat-label"><span data-en>2026 Championship</span><span data-es>Campeonato 2026</span></div></div>
+  <div class="stat-item"><div class="stat-number">6</div><div class="stat-label"><span data-en>Languages</span><span data-es>Idiomas</span></div></div>
 </div></div>
 
-<!-- ABOUT -->
+<!-- ===== ABOUT ===== -->
 <section class="dark-section" id="about"><div class="inner grid-2">
   <div class="reveal">
-    <div class="section-eyebrow"><div class="section-label-line"></div><span class="section-label">Who I Am</span></div>
-    <h2 class="section-title">Driven By<br>More Than<br><span style="color:var(--red)">Speed</span></h2>
-    <p class="lead-text">Racing is not just a sport to me. It is the way I express discipline, identity and ambition. I started in karting at six years old, returned stronger after a forced break, and kept building through European karting, Ginetta Juniors and now GB4.</p>
-    <p class="lead-text">Off track, the project is bigger than a helmet and a car. It is a performance story, a Venezuelan story, a European racing story and a platform for brands that want to be part of something early, real and ambitious.</p>
-    <div class="tag-row"><span class="tag">&#127483; Venezuelan</span><span class="tag">&#127470;&#127481; Italian</span><span class="tag">&#127463;&#127466; Belgium-based</span><span class="tag">&#127937; Elite Motorsport</span></div>
+    <div class="section-eyebrow"><div class="section-label-line"></div>
+      <span class="section-label"><span data-en>Who I Am</span><span data-es>Quien Soy</span></span>
+    </div>
+    <h2 class="section-title">
+      <span data-en>Driven By<br>More Than<br><span style="color:var(--red)">Speed</span></span>
+      <span data-es>Impulsado Por<br>Mucho Mas Que<br><span style="color:var(--red)">Velocidad</span></span>
+    </h2>
+    <p class="lead-text" data-en>Racing is not just a sport to me. It is the way I express discipline, identity and ambition. I started in karting at six years old, returned stronger after a forced break, and kept building through European karting, Ginetta Juniors and now GB4.</p>
+    <p class="lead-text" data-es>Las carreras no son solo un deporte para mi. Es la forma en que expreso disciplina, identidad y ambicion. Empece en el karting a los seis anos, volvi mas fuerte tras una pausa forzada y segui construyendo a traves del karting europeo, Ginetta Juniors y ahora GB4.</p>
+    <p class="lead-text" data-en>Off track, the project is bigger than a helmet and a car. It is a performance story, a Venezuelan story, a European racing story and a platform for brands that want to be part of something early, real and ambitious.</p>
+    <p class="lead-text" data-es>Fuera de la pista, el proyecto es mas grande que un casco y un coche. Es una historia de rendimiento, una historia venezolana, una historia europea del automovilismo.</p>
+    <div class="tag-row">
+      <span class="tag">&#127483; Venezuelan</span>
+      <span class="tag">&#127470;&#127481; Italian</span>
+      <span class="tag">&#127463;&#127466; Belgium-based</span>
+      <span class="tag">&#127937; Elite Motorsport</span>
+    </div>
   </div>
   <div class="about-images reveal">
-    <img src="https://static.wixstatic.com/media/135b3d_dc6db6fb0c0a47c09f45c1a1d04cd1d4~mv2.jpg/v1/fill/w_980%2Ch_653%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/135b3d_dc6db6fb0c0a47c09f45c1a1d04cd1d4~mv2.jpg" alt="Emmilio at Elite Motorsport">
-    <img src="https://static.wixstatic.com/media/135b3d_3676c15011d74393996bd5c8b5950fc9~mv2.jpeg" alt="Emmilio portrait paddock">
-    <img src="https://static.wixstatic.com/media/135b3d_84bdbc67e98542fcb0b6fccc0352e379~mv2.jpg" alt="Emmilio helmet preparation">
+    <img src="/assets/p2.jpeg" alt="Emmilio with Venezuelan flag GB4">
+    <img src="/assets/p5.jpeg" alt="Emmilio in GB4 car cockpit">
+    <img src="/assets/p7.png" alt="Emmilio in car front view Venezuela flag">
   </div>
 </div></section>
 
-<!-- RESULTS -->
+<!-- ===== RESULTS ===== -->
 <section id="results" class="surface-section"><div class="inner">
-  <div class="section-eyebrow reveal"><div class="section-label-line"></div><span class="section-label">Proof Of Performance</span></div>
-  <h2 class="section-title reveal">On-Track<br>Results</h2>
+  <div class="section-eyebrow reveal"><div class="section-label-line"></div>
+    <span class="section-label"><span data-en>Proof Of Performance</span><span data-es>Prueba de Rendimiento</span></span>
+  </div>
+  <h2 class="section-title reveal">
+    <span data-en>On-Track<br>Results</span>
+    <span data-es>Resultados<br>En Pista</span>
+  </h2>
   <div class="grid-3">
-    <div class="card surface reveal"><div class="news-meta">Silverstone &middot; GB4</div><div class="result-position"><span>P</span>2</div><h3>Debut Podium</h3><p>Immediate front-running pace in the first GB4 race weekend, converting pressure into a statement result.</p></div>
-    <div class="card surface reveal"><div class="news-meta">Oulton Park &middot; GB4</div><div class="result-position"><span>P</span>3</div><h3>Fastest Lap</h3><p>Podium finish plus fastest lap, showing racecraft and outright speed in a competitive single-seater field.</p></div>
-    <div class="card surface reveal"><div class="news-meta">Ginetta Juniors</div><div class="result-position"><span>+</span>7</div><h3>Race Fightback</h3><p>Strong race pace and recovery drives, including hard fights from difficult grid positions.</p></div>
-  </div>
-</div></section>
-
-<!-- TIMELINE -->
-<section class="dark-section"><div class="timeline">
-  <div class="section-eyebrow reveal"><div class="section-label-line"></div><span class="section-label">Road So Far</span></div>
-  <h2 class="section-title reveal">Racing<br>Timeline</h2>
-  <div class="timeline-item reveal"><div class="timeline-dot"></div><div class="timeline-year">Age 6</div><h3>First laps in karting</h3><p>Discovered speed, focus and the feeling that started the whole journey.</p></div>
-  <div class="timeline-item reveal"><div class="timeline-dot"></div><div class="timeline-year">Age 13</div><h3>Return with intent</h3><p>Returned after a forced break with a clearer mentality and stronger hunger to progress.</p></div>
-  <div class="timeline-item reveal"><div class="timeline-dot"></div><div class="timeline-year">2025</div><h3>Ginetta Junior Championship</h3><p>First full season in car racing, learning racecraft, engineering communication and close British championship racing.</p></div>
-  <div class="timeline-item reveal"><div class="timeline-dot"></div><div class="timeline-year">2026</div><h3>GB4 Championship</h3><p>Step into single-seaters with Elite Motorsport, including podiums and front-running pace.</p></div>
-</div></section>
-
-<!-- NEWS -->
-<section id="news" class="surface-section"><div class="inner">
-  <div class="section-eyebrow reveal"><div class="section-label-line"></div><span class="section-label">Latest Updates</span></div>
-  <h2 class="section-title reveal">Race News<br><span style="color:var(--red)">And Stories</span></h2>
-  <div class="news-grid" data-news-grid>
-    <a class="news-card reveal" href="/post/venezuelan-podium-at-silverstone-strong-gb4-debut/"><div class="news-card-img"><img loading="lazy" src="https://static.wixstatic.com/media/135b3d_6ddc444b315c4c0f8c62827fcef4b04a~mv2.jpg/v1/fill/w_980%2Ch_653%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/135b3d_6ddc444b315c4c0f8c62827fcef4b04a~mv2.jpg" alt="Venezuelan Podium at Silverstone"></div><div class="news-card-body"><div class="news-meta">27 Apr 2026 &middot; 2 min read</div><h3>Venezuelan Podium at Silverstone: Strong GB4 Debut</h3><p>A strong first GB4 weekend at Silverstone, with immediate front-running pace and a podium result.</p><span class="news-badge">GB4 Debut</span></div></a>
-    <a class="news-card reveal" href="/post/gb4-the-next-step/"><div class="news-card-img"><img loading="lazy" src="https://static.wixstatic.com/media/135b3d_dc6db6fb0c0a47c09f45c1a1d04cd1d4~mv2.jpg/v1/fill/w_980%2Ch_653%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/135b3d_dc6db6fb0c0a47c09f45c1a1d04cd1d4~mv2.jpg" alt="GB4 The Next Step"></div><div class="news-card-body"><div class="news-meta">25 Feb 2026 &middot; 1 min read</div><h3>GB4: The Next Step</h3><p>The move into GB4 with Elite Motorsport marks the next chapter in the single-seater journey.</p><span class="news-badge">Announcement</span></div></a>
-    <a class="news-card reveal" href="/post/donington-the-final-fight/"><div class="news-card-img"><img loading="lazy" src="https://static.wixstatic.com/media/135b3d_9df6b433c29648d08c5cbc0cc299fab9~mv2.jpg/v1/fill/w_980%2Ch_653%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/135b3d_9df6b433c29648d08c5cbc0cc299fab9~mv2.jpg" alt="Donington The Final Fight"></div><div class="news-card-body"><div class="news-meta">15 Oct 2025 &middot; 1 min read</div><h3>Donington: The Final Fight</h3><p>A strong way to close the season, with race pace, fightbacks and proof of progress under pressure.</p><span class="news-badge">Race Report</span></div></a>
-    <a class="news-card reveal" href="/post/croft-hard-fights-real-progress/"><div class="news-card-img"><img loading="lazy" src="https://static.wixstatic.com/media/135b3d_33fb44adbaee40d79a469457a844d575~mv2.jpg/v1/fill/w_980%2Ch_653%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/135b3d_33fb44adbaee40d79a469457a844d575~mv2.jpg" alt="Croft Hard Fights"></div><div class="news-card-body"><div class="news-meta">15 Oct 2025 &middot; 1 min read</div><h3>Croft: Hard Fights, Real Progress</h3><p>A weekend of pace, resilience and wet-weather progress at Croft.</p><span class="news-badge">Race Report</span></div></a>
-    <a class="news-card reveal" href="/post/brands-hatch-step-by-step-forward/"><div class="news-card-img"><img loading="lazy" src="https://static.wixstatic.com/media/135b3d_d48f9ef0a7a54db29b516615ca5830f4~mv2.jpg/v1/fill/w_980%2Ch_653%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/135b3d_d48f9ef0a7a54db29b516615ca5830f4~mv2.jpg" alt="Brands Hatch"></div><div class="news-card-body"><div class="news-meta">15 Oct 2025 &middot; 1 min read</div><h3>Brands Hatch: Step by Step Forward</h3><p>A weekend of learning, strong practice pace and hard racing at Brands Hatch.</p><span class="news-badge">Race Report</span></div></a>
-    <a class="news-card reveal" href="/post/grinding-through-zandvoort-a-weekend-of-progress/"><div class="news-card-img"><img loading="lazy" src="https://static.wixstatic.com/media/135b3d_41b337e1e18c40d6b31fe38ed2290f66~mv2.jpg/v1/fill/w_980%2Ch_653%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/135b3d_41b337e1e18c40d6b31fe38ed2290f66~mv2.jpg" alt="Zandvoort"></div><div class="news-card-body"><div class="news-meta">15 Oct 2025 &middot; 1 min read</div><h3>Grinding Through Zandvoort: A Weekend of Progress</h3><p>Progress, composure and fightback pace through a tough Zandvoort weekend.</p><span class="news-badge">Race Report</span></div></a>
-  </div>
-  <br><br><a href="/news/" class="btn-red-outline">View All News</a>
-</div></section>
-
-<!-- VENEZUELAN STORY -->
-<section class="dark-section" id="story" style="background:#0e0e0e"><div class="inner grid-2">
-  <div class="reveal">
-    <div class="section-eyebrow"><div class="section-label-line"></div><span class="section-label">The Story Behind The Driver</span></div>
-    <h2 class="section-title">Born From<br>Sacrifice &amp;<br><span style="color:var(--red)">Caracas</span></h2>
-    <p class="lead-text">My mother is from Caracas, Venezuela. She left the country at 14 years old, alone, young, and determined, and made her way to Europe. That courage runs in my blood.</p>
-    <p class="lead-text">I was born into two worlds. I lived in Venezuela until I was three, then grew up in Belgium, always carrying that Venezuelan fire inside me. My family sacrifices every single day to keep this dream alive. Every lap I drive, I drive for them.</p>
-    <p class="lead-text">Motorsport in Venezuela has never had a voice at this level. That changes now. When I raise that flag on the podium, it is not just for me. It is for every Venezuelan kid who dares to dream big from a small place.</p>
-    <div class="tag-row"><span class="tag">&#127483; Caracas Roots</span><span class="tag">&#127463;&#127466; Based in Belgium</span><span class="tag">&#127937; Venezuelan in GB4</span></div>
-  </div>
-  <div class="about-images reveal">
-    <img src="/assets/hero.jpeg" alt="Emmilio podium Venezuelan flag Silverstone">
-    <img src="https://static.wixstatic.com/media/135b3d_3ae94825be544ee48dd9d85a5a623405~mv2.jpg" alt="Emmilio on track">
-    <img src="https://static.wixstatic.com/media/135b3d_96085ac23a264053928eaeddf7fd55a1~mv2.jpeg" alt="Emmilio GB4 car">
-  </div>
-</div></section>
-
-<!-- SPANISH STATEMENT -->
-<section style="background:var(--red);padding:5rem 5vw;text-align:center">
-  <div style="max-width:800px;margin:0 auto">
-    <p style="font-size:.75rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:1.2rem">Para Venezuela &middot; For Venezuela</p>
-    <div style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.2rem,5vw,4rem);font-weight:900;text-transform:uppercase;line-height:.95;letter-spacing:-.01em;color:#fff;margin-bottom:1.5rem">"El primer venezolano en GB4 &mdash; rumbo a la Formula 1."</div>
-    <p style="font-size:1rem;font-weight:300;color:rgba(255,255,255,.8);line-height:1.7;max-width:580px;margin:0 auto 2rem">The first Venezuelan in GB4, on the road to Formula 1. Representing Caracas, representing Venezuela, at the highest level of British junior motorsport.</p>
-    <a href="#contact" style="background:#fff;color:var(--red);padding:13px 32px;font-family:'Barlow Condensed',sans-serif;font-size:.85rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;border-radius:3px;display:inline-block">Partner With Emmilio</a>
-  </div>
-</section>
-
-<!-- WHAT I OFFER -->
-<section class="surface-section" id="offer"><div class="inner">
-  <div class="section-eyebrow reveal"><div class="section-label-line"></div><span class="section-label">What A Partnership Includes</span></div>
-  <h2 class="section-title reveal">What I Can<br>Do For Your<br><span style="color:var(--red)">Brand</span></h2>
-  <p class="lead-text reveal" style="max-width:600px;margin-bottom:3rem">This is not just a logo on a car. A partnership with Emmilio is an active, content-driven collaboration that puts your brand in front of a passionate international motorsport audience across six languages.</p>
-  <div class="grid-3" style="margin-top:0">
-    <div class="card surface reveal" style="border-top:2px solid var(--red)"><h3>Car &amp; Race Branding</h3><p>Your logo on the GB4 race car, seen at circuits across Britain, broadcast on GB4 TV, photographed by official media and shared across social channels every race weekend.</p></div>
-    <div class="card surface reveal" style="border-top:2px solid var(--red)"><h3>Social Media Content</h3><p>Dedicated posts and stories featuring your brand across Instagram, YouTube and Facebook before, during and after every race. Content in 6 languages for maximum reach.</p></div>
-    <div class="card surface reveal" style="border-top:2px solid var(--red)"><h3>Race Weekend Videos</h3><p>Behind-the-scenes paddock content, onboard footage, podium moments and race highlights all featuring your brand. Real motorsport content that audiences actually watch.</p></div>
-    <div class="card surface reveal" style="border-top:2px solid var(--red)"><h3>Venezuelan Market Access</h3><p>A direct line to Venezuelan and Latin American audiences through an authentic story. Content in Spanish targeting fans, media and businesses who want a local hero at the highest level.</p></div>
-    <div class="card surface reveal" style="border-top:2px solid var(--red)"><h3>Paddock Hospitality</h3><p>Bring clients or staff to a GB4 race weekend at Silverstone and Donington Park. Paddock access, meet the driver, experience British motorsport up close.</p></div>
-    <div class="card surface reveal" style="border-top:2px solid var(--red)"><h3>Long-Term Ambassador</h3><p>Partners who join early travel the whole journey. As Emmilio climbs from GB4 to GB3 and beyond, your brand is part of the story from the beginning, before it gets expensive.</p></div>
-  </div>
-</div></section>
-
-<!-- PRESS -->
-<section class="dark-section" id="press"><div class="inner">
-  <div class="section-eyebrow reveal"><div class="section-label-line"></div><span class="section-label">Media Coverage</span></div>
-  <h2 class="section-title reveal">In The<br><span style="color:var(--red)">Press</span></h2>
-  <p class="lead-text reveal" style="max-width:580px;margin-bottom:3rem">Official coverage from the GB4 Championship, the governing body of British junior single-seater motorsport.</p>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5px;background:var(--border)">
-    <a href="https://www.gb-4.net/news/2026/jun/19/del-grosso-hoping-for-more-natural-habitat-heat-at-donington-park" target="_blank" rel="noopener" class="card surface reveal" style="text-decoration:none;color:var(--white)">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem"><div style="background:var(--red);color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:2px">GB4 Championship Official</div><span style="font-size:.7rem;color:var(--muted)">19 Jun 2026</span></div>
-      <h3 style="font-size:1.1rem;margin-bottom:.8rem;line-height:1.2">Del Grosso hoping for more natural habitat heat at Donington Park</h3>
-      <p style="font-size:.88rem;color:rgba(255,255,255,.6);line-height:1.6;margin-bottom:1rem">It is always hot in Venezuela, even if it rains, it is still hot. So for me I feel in my natural habitat, and it really suits me. The pace was there.</p>
-      <p style="font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--red)">Read on gb-4.net &rarr;</p>
-    </a>
-    <div class="card surface reveal" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;min-height:200px">
-      <div style="font-size:2rem;margin-bottom:1rem">&#128240;</div>
-      <h3 style="font-size:1rem;margin-bottom:.5rem;opacity:.5">More coverage coming</h3>
-      <p style="font-size:.85rem;color:rgba(255,255,255,.35)">Media enquiries welcome</p>
-      <a href="#contact" style="margin-top:1rem;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--red);text-decoration:none">Contact &rarr;</a>
+    <div class="card surface reveal">
+      <div class="news-meta">Silverstone &middot; GB4</div>
+      <div class="result-position"><span>P</span>2</div>
+      <h3><span data-en>Debut Podium</span><span data-es>Podio de Debut</span></h3>
+      <p data-en>Immediate front-running pace in the first GB4 race weekend. A statement podium on debut at Silverstone.</p>
+      <p data-es>Ritmo de vanguardia inmediato en el primer fin de semana GB4. Un podio contundente en el debut en Silverstone.</p>
+    </div>
+    <div class="card surface reveal">
+      <div class="news-meta">Oulton Park &middot; GB4</div>
+      <div class="result-position"><span>P</span>3</div>
+      <h3><span data-en>Fastest Lap</span><span data-es>Vuelta Rapida</span></h3>
+      <p data-en>Podium finish plus fastest lap, showing racecraft and outright speed in a competitive single-seater field.</p>
+      <p data-es>Podio mas vuelta rapida, demostrando maestria y velocidad pura en un competitivo campo de monoplazas.</p>
+    </div>
+    <div class="card surface reveal">
+      <div class="news-meta">Ginetta Juniors</div>
+      <div class="result-position"><span>+</span>7</div>
+      <h3><span data-en>Race Fightback</span><span data-es>Remontada en Carrera</span></h3>
+      <p data-en>Strong race pace and recovery drives, including hard fights from difficult grid positions.</p>
+      <p data-es>Fuerte ritmo de carrera y remontadas, incluyendo duras batallas desde posiciones dificiles en la parrilla.</p>
     </div>
   </div>
 </div></section>
 
-<!-- QUOTE -->
-<section class="quote-section">
-  <div class="quote-text reveal">"Second place is always the first loser."</div>
-  <p class="quote-attr reveal">Enzo Ferrari &middot; The standard Emmilio races by</p>
+<!-- ===== TIMELINE ===== -->
+<section class="dark-section"><div class="timeline">
+  <div class="section-eyebrow reveal"><div class="section-label-line"></div>
+    <span class="section-label"><span data-en>Road So Far</span><span data-es>El Camino Hasta Aqui</span></span>
+  </div>
+  <h2 class="section-title reveal">
+    <span data-en>Racing<br>Timeline</span>
+    <span data-es>Historial<br>de Carreras</span>
+  </h2>
+  <div class="timeline-item reveal"><div class="timeline-dot"></div><div class="timeline-year">Age 6</div>
+    <h3><span data-en>First laps in karting</span><span data-es>Primeras vueltas en karting</span></h3>
+    <p data-en>Discovered speed, focus and the feeling that started the whole journey.</p>
+    <p data-es>Descubri la velocidad, la concentracion y la sensacion que inicio todo el viaje.</p>
+  </div>
+  <div class="timeline-item reveal"><div class="timeline-dot"></div><div class="timeline-year">Age 13</div>
+    <h3><span data-en>Return with intent</span><span data-es>Regreso con determinacion</span></h3>
+    <p data-en>Returned after a forced break with a clearer mentality and stronger hunger to progress.</p>
+    <p data-es>Regrese despues de una pausa forzada con una mentalidad mas clara y un hambre mas fuerte de progresar.</p>
+  </div>
+  <div class="timeline-item reveal"><div class="timeline-dot"></div><div class="timeline-year">2025</div>
+    <h3><span data-en>Ginetta Junior Championship</span><span data-es>Campeonato Ginetta Junior</span></h3>
+    <p data-en>First full season in car racing. Rapid adaptation, consistent pace improvement, British championship experience.</p>
+    <p data-es>Primera temporada completa en el automovilismo. Adaptacion rapida, mejora consistente del ritmo, experiencia en el campeonato britanico.</p>
+  </div>
+  <div class="timeline-item reveal"><div class="timeline-dot"></div><div class="timeline-year">2026</div>
+    <h3><span data-en>GB4 Championship</span><span data-es>Campeonato GB4</span></h3>
+    <p data-en>Step into single-seaters with Elite Motorsport. P2 debut at Silverstone. P3 and fastest lap at Oulton Park.</p>
+    <p data-es>Salto a los monoplazas con Elite Motorsport. P2 en el debut en Silverstone. P3 y vuelta rapida en Oulton Park.</p>
+  </div>
+</div></section>
+
+<!-- ===== NEWS ===== -->
+<section id="news" class="surface-section"><div class="inner">
+  <div class="section-eyebrow reveal"><div class="section-label-line"></div>
+    <span class="section-label"><span data-en>Latest Updates</span><span data-es>Ultimas Noticias</span></span>
+  </div>
+  <h2 class="section-title reveal">
+    <span data-en>Race News<br><span style="color:var(--red)">And Stories</span></span>
+    <span data-es>Noticias de Carrera<br><span style="color:var(--red)">e Historias</span></span>
+  </h2>
+  <div class="news-grid">
+    <a class="news-card reveal" href="/post/venezuelan-podium-at-silverstone-strong-gb4-debut/">
+      <div class="news-card-img"><img loading="lazy" src="/assets/p1.jpeg" alt="Venezuelan Podium Silverstone"></div>
+      <div class="news-card-body">
+        <div class="news-meta">27 Apr 2026 &middot; 2 min read</div>
+        <h3>Venezuelan Podium at Silverstone: Strong GB4 Debut</h3>
+        <p data-en>A strong first GB4 weekend with immediate front-running pace and a podium result.</p>
+        <p data-es>Un fuerte primer fin de semana en GB4 con ritmo inmediato y un resultado de podio.</p>
+        <span class="news-badge">GB4 Debut</span>
+      </div>
+    </a>
+    <a class="news-card reveal" href="/post/gb4-the-next-step/">
+      <div class="news-card-img"><img loading="lazy" src="/assets/p3.jpeg" alt="GB4 Snetterton"></div>
+      <div class="news-card-body">
+        <div class="news-meta">25 Feb 2026 &middot; 1 min read</div>
+        <h3>GB4: The Next Step</h3>
+        <p data-en>The move into GB4 with Elite Motorsport marks the next chapter in the single-seater journey.</p>
+        <p data-es>El salto al GB4 con Elite Motorsport marca el siguiente capitulo en el viaje de los monoplazas.</p>
+        <span class="news-badge"><span data-en>Announcement</span><span data-es>Anuncio</span></span>
+      </div>
+    </a>
+    <a class="news-card reveal" href="/post/donington-the-final-fight/">
+      <div class="news-card-img"><img loading="lazy" src="https://static.wixstatic.com/media/135b3d_9df6b433c29648d08c5cbc0cc299fab9~mv2.jpg/v1/fill/w_980%2Ch_653%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/135b3d_9df6b433c29648d08c5cbc0cc299fab9~mv2.jpg" alt="Donington"></div>
+      <div class="news-card-body">
+        <div class="news-meta">15 Oct 2025 &middot; 1 min read</div>
+        <h3>Donington: The Final Fight</h3>
+        <p data-en>A strong way to close the season, with race pace, fightbacks and proof of progress.</p>
+        <p data-es>Una forma fuerte de cerrar la temporada, con ritmo de carrera, remontadas y prueba de progreso.</p>
+        <span class="news-badge"><span data-en>Race Report</span><span data-es>Informe de Carrera</span></span>
+      </div>
+    </a>
+    <a class="news-card reveal" href="/post/croft-hard-fights-real-progress/">
+      <div class="news-card-img"><img loading="lazy" src="https://static.wixstatic.com/media/135b3d_33fb44adbaee40d79a469457a844d575~mv2.jpg/v1/fill/w_980%2Ch_653%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/135b3d_33fb44adbaee40d79a469457a844d575~mv2.jpg" alt="Croft"></div>
+      <div class="news-card-body">
+        <div class="news-meta">15 Oct 2025 &middot; 1 min read</div>
+        <h3>Croft: Hard Fights, Real Progress</h3>
+        <p data-en>A weekend of pace, resilience and wet-weather progress.</p>
+        <p data-es>Un fin de semana de ritmo, resistencia y progreso en condiciones de lluvia.</p>
+        <span class="news-badge"><span data-en>Race Report</span><span data-es>Informe de Carrera</span></span>
+      </div>
+    </a>
+    <a class="news-card reveal" href="/post/brands-hatch-step-by-step-forward/">
+      <div class="news-card-img"><img loading="lazy" src="https://static.wixstatic.com/media/135b3d_d48f9ef0a7a54db29b516615ca5830f4~mv2.jpg/v1/fill/w_980%2Ch_653%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/135b3d_d48f9ef0a7a54db29b516615ca5830f4~mv2.jpg" alt="Brands Hatch"></div>
+      <div class="news-card-body">
+        <div class="news-meta">15 Oct 2025 &middot; 1 min read</div>
+        <h3>Brands Hatch: Step by Step Forward</h3>
+        <p data-en>A weekend of learning, strong practice pace and hard racing.</p>
+        <p data-es>Un fin de semana de aprendizaje, fuerte ritmo en entrenamientos y carreras duras.</p>
+        <span class="news-badge"><span data-en>Race Report</span><span data-es>Informe de Carrera</span></span>
+      </div>
+    </a>
+    <a class="news-card reveal" href="/post/grinding-through-zandvoort-a-weekend-of-progress/">
+      <div class="news-card-img"><img loading="lazy" src="https://static.wixstatic.com/media/135b3d_41b337e1e18c40d6b31fe38ed2290f66~mv2.jpg/v1/fill/w_980%2Ch_653%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/135b3d_41b337e1e18c40d6b31fe38ed2290f66~mv2.jpg" alt="Zandvoort"></div>
+      <div class="news-card-body">
+        <div class="news-meta">15 Oct 2025 &middot; 1 min read</div>
+        <h3>Grinding Through Zandvoort</h3>
+        <p data-en>Progress, composure and fightback pace through a tough Zandvoort weekend.</p>
+        <p data-es>Progreso, compostura y ritmo de remontada en un duro fin de semana en Zandvoort.</p>
+        <span class="news-badge"><span data-en>Race Report</span><span data-es>Informe de Carrera</span></span>
+      </div>
+    </a>
+  </div>
+  <br><br>
+  <a href="/news/" class="btn-red-outline">
+    <span data-en>View All News</span><span data-es>Ver Todas las Noticias</span>
+  </a>
+</div></section>
+
+<!-- ===== VENEZUELAN STORY ===== -->
+<section class="dark-section" id="story" style="background:#0d0d0d"><div class="inner grid-2">
+  <div class="reveal">
+    <div class="section-eyebrow"><div class="section-label-line"></div>
+      <span class="section-label"><span data-en>The Story Behind The Driver</span><span data-es>La Historia Detras del Piloto</span></span>
+    </div>
+    <h2 class="section-title">
+      <span data-en>Venezuela<br>Finally Has<br><span style="color:var(--red)">A Voice</span></span>
+      <span data-es>Venezuela<br>Por Fin Tiene<br><span style="color:var(--red)">Una Voz</span></span>
+    </h2>
+    <p class="lead-text" data-en>The last Venezuelan to make a serious attempt at the pinnacle of motorsport was Pastor Maldonado, who raced in Formula 1 from 2011 to 2015 and won the 2012 Spanish Grand Prix. That was over a decade ago. Since then, Venezuela has had no voice at the highest levels of single-seater racing.</p>
+    <p class="lead-text" data-es>El ultimo venezolano en hacer un intento serio en la cima del automovilismo fue Pastor Maldonado, quien corrio en Formula 1 de 2011 a 2015 y gano el Gran Premio de Espana de 2012. Eso fue hace mas de una decada. Desde entonces, Venezuela no ha tenido voz en los niveles mas altos del automovilismo de monoplazas.</p>
+    <p class="lead-text" data-en>That changes now. My mother is from Caracas. She left Venezuela at 14 years old — alone, determined, carrying everything that makes a Venezuelan: fire, resilience, and the refusal to accept limits. I grew up in Belgium carrying that same fire. My family sacrifices every single day to keep this dream alive.</p>
+    <p class="lead-text" data-es>Eso cambia ahora. Mi madre es de Caracas. Salio de Venezuela a los 14 anos, sola, determinada, llevando todo lo que hace a un venezolano: fuego, resiliencia y la negativa a aceptar limites. Creci en Belgica llevando ese mismo fuego. Mi familia sacrifica cada dia para mantener vivo este sueno.</p>
+    <p class="lead-text" data-en>I am the first Venezuelan competing in the GB4 Championship. Every lap I drive, every podium I stand on with that flag, I am carrying a nation that has been waiting. Venezuela deserves to be back at the top of motorsport. I am here to make that happen.</p>
+    <p class="lead-text" data-es>Soy el primer venezolano compitiendo en el Campeonato GB4. Cada vuelta que doy, cada podio en el que me subo con esa bandera, llevo a una nacion que ha estado esperando. Venezuela merece volver a la cima del automovilismo. Estoy aqui para hacerlo realidad.</p>
+    <div class="tag-row">
+      <span class="tag">&#127483; Caracas Roots</span>
+      <span class="tag">&#127463;&#127466; Based in Belgium</span>
+      <span class="tag">&#127937; <span data-en>First Venezuelan in GB4</span><span data-es>Primer Venezolano en GB4</span></span>
+    </div>
+  </div>
+  <div class="about-images reveal">
+    <img src="/assets/p4.jpeg" alt="Emmilio with Venezuelan flag Oulton Park podium">
+    <img src="/assets/p9.jpg" alt="Emmilio paddock Venezuelan flag on car">
+    <img src="/assets/p10.jpeg" alt="Emmilio podium champagne Venezuelan flag">
+  </div>
+</div></section>
+
+<!-- ===== SPANISH STATEMENT ===== -->
+<section style="background:var(--red);padding:5rem 5vw;text-align:center">
+  <div style="max-width:800px;margin:0 auto">
+    <p style="font-size:.75rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:1.2rem">Para Venezuela &middot; For Venezuela</p>
+    <div style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(2rem,5vw,3.8rem);font-weight:900;text-transform:uppercase;line-height:.95;letter-spacing:-.01em;color:#fff;margin-bottom:1.5rem">
+      "El primer venezolano en GB4<br>rumbo a la Formula 1."
+    </div>
+    <p style="font-size:1rem;font-weight:300;color:rgba(255,255,255,.85);line-height:1.7;max-width:580px;margin:0 auto 2rem">
+      <span data-en>The first Venezuelan in GB4, on the road to Formula 1. Venezuela had no voice at the highest levels of motorsport for over a decade. That ends now.</span>
+      <span data-es>El primer venezolano en GB4, camino a la Formula 1. Venezuela no tuvo voz en los niveles mas altos del automovilismo durante mas de una decada. Eso termina ahora.</span>
+    </p>
+    <a href="#contact" style="background:#fff;color:var(--red);padding:13px 32px;font-family:'Barlow Condensed',sans-serif;font-size:.85rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;border-radius:3px;display:inline-block">
+      <span data-en>Partner With Emmilio</span>
+      <span data-es>Se Socio de Emmilio</span>
+    </a>
+  </div>
 </section>
 
-<!-- PARTNERS -->
+<!-- ===== WHAT I OFFER ===== -->
+<section class="surface-section" id="offer"><div class="inner">
+  <div class="section-eyebrow reveal"><div class="section-label-line"></div>
+    <span class="section-label"><span data-en>What A Partnership Includes</span><span data-es>Que Incluye una Asociacion</span></span>
+  </div>
+  <h2 class="section-title reveal">
+    <span data-en>What I Can<br>Do For Your<br><span style="color:var(--red)">Brand</span></span>
+    <span data-es>Que Puedo<br>Hacer Por Tu<br><span style="color:var(--red)">Marca</span></span>
+  </h2>
+  <div class="grid-3" style="margin-top:2rem">
+    <div class="card surface reveal" style="border-top:2px solid var(--red)">
+      <h3><span data-en>Car &amp; Race Branding</span><span data-es>Branding en el Coche</span></h3>
+      <p data-en>Your logo on the GB4 race car, seen across Britain, broadcast on GB4 TV, photographed by official media every race weekend.</p>
+      <p data-es>Tu logo en el coche de carreras GB4, visto en toda Gran Bretana, transmitido en GB4 TV, fotografiado por medios oficiales cada fin de semana.</p>
+    </div>
+    <div class="card surface reveal" style="border-top:2px solid var(--red)">
+      <h3><span data-en>Social Media Content</span><span data-es>Contenido en Redes Sociales</span></h3>
+      <p data-en>Dedicated posts across Instagram, YouTube and Facebook in 6 languages for maximum reach across Europe and Latin America.</p>
+      <p data-es>Publicaciones dedicadas en Instagram, YouTube y Facebook en 6 idiomas para maxima audiencia en Europa y America Latina.</p>
+    </div>
+    <div class="card surface reveal" style="border-top:2px solid var(--red)">
+      <h3><span data-en>Race Weekend Videos</span><span data-es>Videos del Fin de Semana</span></h3>
+      <p data-en>Behind-the-scenes paddock content, onboard footage and podium moments all featuring your brand.</p>
+      <p data-es>Contenido del paddock entre bastidores, metraje a bordo y momentos de podio con tu marca.</p>
+    </div>
+    <div class="card surface reveal" style="border-top:2px solid var(--red)">
+      <h3><span data-en>Venezuelan Market Access</span><span data-es>Acceso al Mercado Venezolano</span></h3>
+      <p data-en>A direct line to Venezuelan and Latin American audiences. Content in Spanish for fans and businesses who want a local hero at the top level.</p>
+      <p data-es>Una linea directa a audiencias venezolanas y latinoamericanas. Contenido en espanol para aficionados y empresas que quieren un heroe local en el maximo nivel.</p>
+    </div>
+    <div class="card surface reveal" style="border-top:2px solid var(--red)">
+      <h3><span data-en>Paddock Hospitality</span><span data-es>Hospitalidad en el Paddock</span></h3>
+      <p data-en>Bring clients to GB4 races at Silverstone and Donington Park. Paddock access, meet the driver, experience British motorsport up close.</p>
+      <p data-es>Lleva clientes a las carreras GB4 en Silverstone y Donington Park. Acceso al paddock, conoce al piloto, vive el automovilismo britanico de cerca.</p>
+    </div>
+    <div class="card surface reveal" style="border-top:2px solid var(--red)">
+      <h3><span data-en>Long-Term Ambassador</span><span data-es>Embajador a Largo Plazo</span></h3>
+      <p data-en>Partners who join early travel the whole journey from GB4 to GB3 and beyond. Get in before it gets expensive.</p>
+      <p data-es>Los socios que se unen pronto hacen todo el viaje desde GB4 hasta GB3 y mas alla. Unete antes de que sea mas caro.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- ===== PRESS ===== -->
+<section class="dark-section" id="press"><div class="inner">
+  <div class="section-eyebrow reveal"><div class="section-label-line"></div>
+    <span class="section-label"><span data-en>Media Coverage</span><span data-es>Cobertura Mediatica</span></span>
+  </div>
+  <h2 class="section-title reveal">
+    <span data-en>In The<br><span style="color:var(--red)">Press</span></span>
+    <span data-es>En Los<br><span style="color:var(--red)">Medios</span></span>
+  </h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5px;background:var(--border);margin-top:2rem">
+    <a href="https://www.gb-4.net/news/2026/jun/19/del-grosso-hoping-for-more-natural-habitat-heat-at-donington-park" target="_blank" rel="noopener" class="card surface reveal" style="text-decoration:none;color:var(--white)">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem">
+        <div style="background:var(--red);color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:2px">GB4 Championship Official</div>
+        <span style="font-size:.7rem;color:var(--muted)">19 Jun 2026</span>
+      </div>
+      <h3 style="font-size:1.1rem;margin-bottom:.8rem;line-height:1.2">Del Grosso hoping for more natural habitat heat at Donington Park</h3>
+      <p style="font-size:.88rem;color:rgba(255,255,255,.6);line-height:1.6;margin-bottom:1rem">It is always hot in Venezuela, even if it rains, it is still hot. So for me I feel in my natural habitat, and it really suits me.</p>
+      <p style="font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--red)">Read on gb-4.net &rarr;</p>
+    </a>
+    <div class="card surface reveal" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;min-height:180px">
+      <div style="font-size:2rem;margin-bottom:1rem">&#128240;</div>
+      <h3 style="font-size:1rem;margin-bottom:.5rem;opacity:.5"><span data-en>More coverage coming</span><span data-es>Mas cobertura proximamente</span></h3>
+      <p style="font-size:.85rem;color:rgba(255,255,255,.35)"><span data-en>Media enquiries welcome</span><span data-es>Bienvenidas consultas de medios</span></p>
+      <a href="#contact" style="margin-top:1rem;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--red);text-decoration:none">
+        <span data-en>Contact</span><span data-es>Contacto</span> &rarr;
+      </a>
+    </div>
+  </div>
+</div></section>
+
+<!-- ===== QUOTE ===== -->
+<section class="quote-section">
+  <div class="quote-text reveal">"Second place is always the first loser."</div>
+  <p class="quote-attr reveal">Enzo Ferrari &middot; <span data-en>The standard Emmilio races by</span><span data-es>El estandar por el que corre Emmilio</span></p>
+</section>
+
+<!-- ===== PARTNERS ===== -->
 <section id="partners" class="dark-section"><div class="inner grid-2">
   <div class="reveal">
-    <div class="section-eyebrow"><div class="section-label-line"></div><span class="section-label">Partner With Emmilio</span></div>
-    <h2 class="section-title">Commercial<br><span style="color:var(--red)">Platform</span></h2>
-    <p class="lead-text">A partner can use Emmilio for visibility, content, events, storytelling, youth inspiration, business relationship-building and premium motorsport experiences.</p>
+    <div class="section-eyebrow"><div class="section-label-line"></div>
+      <span class="section-label"><span data-en>Partner With Emmilio</span><span data-es>Se Socio de Emmilio</span></span>
+    </div>
+    <h2 class="section-title">
+      <span data-en>Commercial<br><span style="color:var(--red)">Platform</span></span>
+      <span data-es>Plataforma<br><span style="color:var(--red)">Comercial</span></span>
+    </h2>
+    <p class="lead-text" data-en>A partner can use Emmilio for visibility, content, events, storytelling, youth inspiration and premium motorsport experiences.</p>
+    <p class="lead-text" data-es>Un socio puede usar a Emmilio para visibilidad, contenido, eventos, storytelling, inspiracion juvenil y experiencias premium de automovilismo.</p>
   </div>
   <div class="partner-logos reveal">
     <div class="partner-tile"><img src="https://static.wixstatic.com/media/135b3d_f5d25b683fb643b3a236e06e2977d5cb~mv2.png" alt="Elite Motorsport" onerror="this.outerHTML='<span style=&quot;color:rgba(255,255,255,.6);font-size:.9rem;font-weight:600&quot;>Elite Motorsport</span>'"></div>
     <div class="partner-tile"><img src="https://static.wixstatic.com/media/135b3d_0360148e51bf4b83a48de8fe31e70bf5~mv2.png" alt="P1 Coatings" onerror="this.outerHTML='<span style=&quot;color:rgba(255,255,255,.6);font-size:.9rem;font-weight:600&quot;>P1 Coatings</span>'"></div>
     <div class="partner-tile"><img src="https://static.wixstatic.com/media/135b3d_b4ee31b63d674ad698e7cd08feed960b~mv2.jpg" alt="Peeltex" onerror="this.outerHTML='<span style=&quot;color:rgba(255,255,255,.6);font-size:.9rem;font-weight:600&quot;>Peeltex</span>'"></div>
     <div class="partner-tile"><img src="https://static.wixstatic.com/media/135b3d_67aa195688c44034876682ba3b84ee41~mv2.jpg" alt="Al Peperone" onerror="this.outerHTML='<span style=&quot;color:rgba(255,255,255,.6);font-size:.9rem;font-weight:600&quot;>Al Peperone</span>'"></div>
-    <a class="partner-tile add-partner" href="#contact">+ Your Brand Here</a>
+    <a class="partner-tile add-partner" href="#contact">+ <span data-en>Your Brand Here</span><span data-es>Tu Marca Aqui</span></a>
   </div>
 </div></section>
 
-<!-- GALLERY -->
+<!-- ===== GALLERY ===== -->
 <section class="surface-section"><div class="inner">
-  <div class="section-eyebrow reveal"><div class="section-label-line"></div><span class="section-label">Gallery</span></div>
+  <div class="section-eyebrow reveal"><div class="section-label-line"></div>
+    <span class="section-label">Gallery</span>
+  </div>
   <div class="gallery-grid">
     <div class="gallery-item wide reveal"><img src="/assets/hero.jpeg" alt="Silverstone P2 podium Venezuelan flag"></div>
-    <div class="gallery-item reveal"><img src="https://static.wixstatic.com/media/135b3d_96085ac23a264053928eaeddf7fd55a1~mv2.jpeg" alt="Emmilio in the GB4 car"></div>
-    <div class="gallery-item reveal"><img src="https://static.wixstatic.com/media/135b3d_433afa4271df43b19aa601a6e1c1a0ef~mv2.jpg" alt="Emmilio with Elite Motorsport team"></div>
-    <div class="gallery-item reveal"><img src="https://static.wixstatic.com/media/135b3d_3676c15011d74393996bd5c8b5950fc9~mv2.jpeg" alt="Emmilio portrait paddock"></div>
-    <div class="gallery-item reveal"><img src="https://static.wixstatic.com/media/135b3d_b3bab5fc916f48469db5659945b8f5b0~mv2.jpg" alt="Young Emmilio where it all started"></div>
-    <div class="gallery-item reveal"><img src="https://static.wixstatic.com/media/135b3d_7ee973eb41af422f84638b44e712ca66~mv2.jpg" alt="Emmilio race suit"></div>
-    <div class="gallery-item reveal"><img src="https://static.wixstatic.com/media/135b3d_9df6b433c29648d08c5cbc0cc299fab9~mv2.jpg" alt="Donington Park race"></div>
-    <div class="gallery-item reveal"><img src="https://static.wixstatic.com/media/135b3d_33fb44adbaee40d79a469457a844d575~mv2.jpg" alt="Croft circuit"></div>
+    <div class="gallery-item reveal"><img src="/assets/p4.jpeg" alt="Emmilio Oulton Park Venezuelan flag"></div>
+    <div class="gallery-item reveal"><img src="/assets/p6.png" alt="Emmilio in GB4 car cockpit overhead"></div>
+    <div class="gallery-item reveal"><img src="/assets/p3.jpeg" alt="GB4 car Snetterton track"></div>
+    <div class="gallery-item reveal"><img src="/assets/p8.jpeg" alt="Snetterton GB4 car front"></div>
+    <div class="gallery-item reveal"><img src="/assets/p2.jpeg" alt="Emmilio cockpit Venezuelan flag on car"></div>
+    <div class="gallery-item reveal"><img src="/assets/p9.jpg" alt="Emmilio helmet paddock preparation"></div>
+    <div class="gallery-item reveal"><img src="/assets/p10.jpeg" alt="Emmilio Silverstone podium champagne"></div>
   </div>
 </div></section>
 
-<!-- CONTACT -->
+<!-- ===== CONTACT ===== -->
 <section id="contact" class="dark-section"><div class="inner contact-grid">
   <div class="reveal">
-    <div class="section-eyebrow"><div class="section-label-line"></div><span class="section-label">Get In Touch</span></div>
-    <h2 class="section-title">Let's Build<br><span style="color:var(--red)">Something</span></h2>
-    <p class="lead-text">For sponsors, media, teams, event opportunities or people who believe in the journey, send a message here.</p>
+    <div class="section-eyebrow"><div class="section-label-line"></div>
+      <span class="section-label"><span data-en>Get In Touch</span><span data-es>Contactanos</span></span>
+    </div>
+    <h2 class="section-title">
+      <span data-en>Let's Build<br><span style="color:var(--red)">Something</span></span>
+      <span data-es>Construyamos<br><span style="color:var(--red)">Algo Juntos</span></span>
+    </h2>
+    <p class="lead-text" data-en>For sponsors, media, teams or people who believe in the journey, send a message here.</p>
+    <p class="lead-text" data-es>Para patrocinadores, medios, equipos o personas que creen en el camino, envia un mensaje aqui.</p>
     <div class="socials">
       <a href="https://www.instagram.com/emmilio_v" class="social-link" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
       <a href="https://www.youtube.com/@Emmilio.Valentino" class="social-link" target="_blank" rel="noopener" aria-label="YouTube">YT</a>
@@ -275,22 +524,48 @@ function pickLang(l){
   <div class="contact-box reveal">
     <form name="contact" method="POST" action="/thank-you/" data-netlify="true" netlify-honeypot="bot-field">
       <input type="hidden" name="form-name" value="contact">
-      <p class="hidden"><label>Do not fill this out: <input name="bot-field"></label></p>
+      <p class="hidden"><label>Do not fill: <input name="bot-field"></label></p>
       <div class="form-grid">
-        <div class="form-field"><label for="name">Name</label><input id="name" name="name" autocomplete="name" required></div>
-        <div class="form-field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
-        <div class="form-field"><label for="company">Company</label><input id="company" name="company" autocomplete="organization"></div>
-        <div class="form-field"><label for="subject">Subject</label><select id="subject" name="subject"><option>Partnership</option><option>Media</option><option>Team / Racing</option><option>General</option></select></div>
-        <div class="form-field full"><label for="message">Message</label><textarea id="message" name="message" required></textarea></div>
+        <div class="form-field">
+          <label for="name"><span data-en>Name</span><span data-es>Nombre</span></label>
+          <input id="name" name="name" autocomplete="name" required>
+        </div>
+        <div class="form-field">
+          <label for="email"><span data-en>Email</span><span data-es>Correo</span></label>
+          <input id="email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="form-field">
+          <label for="company"><span data-en>Company</span><span data-es>Empresa</span></label>
+          <input id="company" name="company">
+        </div>
+        <div class="form-field">
+          <label for="subject">Subject</label>
+          <select id="subject" name="subject">
+            <option>Partnership</option>
+            <option>Media</option>
+            <option>Team / Racing</option>
+            <option>General</option>
+          </select>
+        </div>
+        <div class="form-field full">
+          <label for="message"><span data-en>Message</span><span data-es>Mensaje</span></label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
       </div>
-      <button class="btn-primary" type="submit">Send Message</button>
+      <button class="btn-primary" type="submit">
+        <span data-en>Send Message</span><span data-es>Enviar Mensaje</span>
+      </button>
     </form>
   </div>
 </div></section>
 
 </main>
 
-<a href="/#contact" class="sticky-cta" data-track="sticky_contact">Partner / Contact</a>
+<a href="/#contact" class="sticky-cta">
+  <span data-en>Partner / Contact</span>
+  <span data-es>Patrocinio / Contacto</span>
+</a>
+
 <footer>
   <div class="footer-brand">Del Grosso<span>Racing</span></div>
   <div class="footer-copy">&copy; 2026 Emmilio Valentino Del Grosso &middot; delgrossoracing.com</div>
@@ -298,4 +573,44 @@ function pickLang(l){
 
 <script src="/assets/js/main.js" defer></script>
 <script src="/assets/js/news.js" defer></script>
-</body></html>
+
+<script>
+// ===== BULLETPROOF LANGUAGE SYSTEM =====
+// Uses data-en / data-es attributes on HTML elements
+// Stores choice in localStorage so it persists forever
+
+function setLang(l) {
+  // Hide overlay
+  var o = document.getElementById('lang-overlay');
+  if (o) o.style.display = 'none';
+
+  // Set language on html element
+  document.documentElement.lang = l;
+
+  // Update active button
+  var btnEn = document.getElementById('btn-en');
+  var btnEs = document.getElementById('btn-es');
+  if (btnEn) btnEn.classList.toggle('active', l === 'en');
+  if (btnEs) btnEs.classList.toggle('active', l === 'es');
+
+  // Save forever
+  try { localStorage.setItem('lang', l); } catch(e) {}
+}
+
+// On page load
+(function() {
+  var saved;
+  try { saved = localStorage.getItem('lang'); } catch(e) {}
+
+  if (saved) {
+    // Already chose — hide overlay instantly, apply language
+    var o = document.getElementById('lang-overlay');
+    if (o) o.style.display = 'none';
+    setLang(saved);
+  }
+  // If no saved choice, overlay stays visible (default from CSS)
+})();
+</script>
+
+</body>
+</html>
