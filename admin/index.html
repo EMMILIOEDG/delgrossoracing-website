@@ -5,6 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Del Grosso Racing Admin</title>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    (function () {
+      function hasIdentityToken() {
+        return /(invite_token|confirmation_token|recovery_token|email_change_token)=/.test(window.location.hash || "");
+      }
+      function openIdentityIfNeeded() {
+        if (!window.netlifyIdentity) return;
+        if (hasIdentityToken()) {
+          window.netlifyIdentity.open();
+        }
+      }
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", function () {
+          openIdentityIfNeeded();
+        });
+        window.netlifyIdentity.on("login", function () {
+          window.netlifyIdentity.close();
+          window.location.href = "/admin/";
+        });
+        window.addEventListener("load", function () {
+          setTimeout(openIdentityIfNeeded, 250);
+          setTimeout(openIdentityIfNeeded, 900);
+        });
+      }
+    })();
+  </script>
 </head>
 <body>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>

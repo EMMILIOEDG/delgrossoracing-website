@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+  (function () {
+    var hash = window.location.hash || "";
+    var hasIdentityToken = /(invite_token|confirmation_token|recovery_token|email_change_token)=/.test(hash);
+    var isAdmin = /^\/admin\/?/.test(window.location.pathname);
+    if (hasIdentityToken && !isAdmin) {
+      window.location.replace("/admin/" + hash);
+    }
+  })();
+</script>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Thank You | Emmilio Valentino Del Grosso</title>
@@ -615,24 +626,7 @@
 </style>
 
 <script src="/assets/js/analytics.js" defer></script>
-
-
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-<script>
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.on("init", function(user) {
-      var hash = window.location.hash || "";
-      if (!user && /(confirmation_token|invite_token|recovery_token|email_change_token)/.test(hash)) {
-        window.netlifyIdentity.open();
-      }
-    });
-    window.netlifyIdentity.on("login", function() {
-      if (window.location.pathname !== "/admin/" && window.location.pathname !== "/admin") {
-        document.location.href = "/admin/";
-      }
-    });
-  }
-</script>
 </head>
 <body data-page="thank-you">
 <nav>
