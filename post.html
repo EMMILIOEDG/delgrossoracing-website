@@ -634,68 +634,24 @@
   }
 </script>
 </head>
-<body data-page="post">
+<body data-page="post-list">
 <nav>
   <a href="/" class="nav-logo" data-track="nav_home">Del Grosso<span>Racing</span></a>
   <ul class="nav-links">
     <li><a href="/" data-track="nav_home">Home</a></li>
     <li><a href="/news" class="active" data-track="nav_news">News</a></li>
-    <li><a href="/#partners" data-track="nav_partners">Partners</a></li>
     <li><a href="/#contact" class="nav-cta" data-track="nav_contact">Contact</a></li>
   </ul>
 </nav>
-
-<section class="subhero">
-  <div class="subhero-bg"></div>
-  <div class="subhero-content reveal">
-    <div class="hero-eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Race Report · Update</span></div>
-    <h1 id="postTitle">Loading<br><em>Article</em></h1>
-    <p class="subhero-sub" id="postSummary">Loading the latest racing story.</p>
-  </div>
-</section>
-
-<section class="news-section">
-  <div class="journey-grid" id="postContainer" style="max-width:900px;margin:0 auto;">
-    <p class="lead-text">Loading article...</p>
-  </div>
-</section>
+<section class="subhero"><div class="subhero-bg"></div><div class="subhero-content reveal"><div class="hero-eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Latest News</span></div><h1>Racing<br><em>Articles</em></h1><p class="subhero-sub">Select one of the latest racing updates.</p></div></section>
+<section class="news-section"><div class="news-grid"><a class="news-card reveal" href="/post/venezuelan-podium-at-silverstone/"><div class="news-card-img"><img src="https://static.wixstatic.com/media/135b3d_6ddc444b315c4c0f8c62827fcef4b04a~mv2.jpg" alt="Venezuelan Podium at Silverstone: Strong GB4 Debut"></div><div class="news-card-body"><div class="news-meta">27 April 2026 · 2 min read</div><h3>Venezuelan Podium at Silverstone: Strong GB4 Debut</h3><p>A composed debut weekend in GB4 with front-running pace, a podium result and a clear statement of intent.</p></div></a>
+<a class="news-card reveal" href="/post/gb4-the-next-step/"><div class="news-card-img"><img src="https://static.wixstatic.com/media/135b3d_8555f50961f24d258fc4e76d43da2ef3~mv2.png" alt="GB4: The Next Step"></div><div class="news-card-body"><div class="news-meta">25 February 2026 · 1 min read</div><h3>GB4: The Next Step</h3><p>The step into GB4 with Elite Motorsport marks the next chapter of the single-seater journey.</p></div></a>
+<a class="news-card reveal" href="/post/donington-the-final-fight/"><div class="news-card-img"><img src="https://static.wixstatic.com/media/135b3d_9df6b433c29648d08c5cbc0cc299fab9~mv2.jpg" alt="Donington: The Final Fight"></div><div class="news-card-body"><div class="news-meta">15 October 2025 · 1 min read</div><h3>Donington: The Final Fight</h3><p>A tough but important final round, showing progress, racecraft and resilience at the end of the season.</p></div></a></div></section>
 
 <footer>
   <div class="footer-brand">Del Grosso<span>Racing</span></div>
   <div class="footer-copy">© 2026 Emmilio Valentino Del Grosso · delgrossoracing.com</div>
 </footer>
 <script src="/assets/js/main.js" defer></script>
-<script>
-(async function() {
-  function escapeHtml(value) { return String(value || '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c])); }
-  function formatDate(dateString) {
-    if (!dateString) return '';
-    const d = new Date(dateString + 'T00:00:00');
-    if (Number.isNaN(d.getTime())) return dateString;
-    return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
-  }
-  const slug = decodeURIComponent(location.pathname.split('/').filter(Boolean).pop() || new URLSearchParams(location.search).get('slug') || '');
-  const container = document.getElementById('postContainer');
-  try {
-    const res = await fetch('/data/news.json', { cache: 'no-store' });
-    const data = await res.json();
-    const post = (data.posts || []).find(p => p.slug === slug) || (data.posts || [])[0];
-    if (!post) throw new Error('No post found');
-    document.title = post.title + ' | Emmilio Valentino Del Grosso';
-    document.getElementById('postTitle').innerHTML = escapeHtml(post.title).replace(':', ':<br><em>') + (post.title.includes(':') ? '</em>' : '');
-    document.getElementById('postSummary').textContent = post.summary || '';
-    const paragraphs = String(post.body || '').split(/\n\s*\n/).filter(Boolean).map(p => `<p class="lead-text" style="margin-bottom:1.2rem">${escapeHtml(p)}</p>`).join('');
-    container.innerHTML = `
-      <div class="section-eyebrow reveal"><div class="section-label-line"></div><span class="section-label">${escapeHtml(post.badge || 'Update')}</span></div>
-      <div class="news-meta" style="margin-bottom:1.5rem">${escapeHtml(formatDate(post.date))}${post.read_time ? ' · ' + escapeHtml(post.read_time) : ''}</div>
-      <div class="gallery-item wide reveal" style="width:100%;margin-bottom:2rem"><img src="${escapeHtml(post.image)}" alt="${escapeHtml(post.title)}"></div>
-      ${paragraphs}
-      <br><a href="/news" class="btn-red-outline">Back To News</a>
-    `;
-  } catch (e) {
-    container.innerHTML = '<h2 class="section-title">Article Not Found</h2><p class="lead-text">Go back to the news page and choose another update.</p><br><a href="/news" class="btn-red-outline">Back To News</a>';
-  }
-})();
-</script>
 </body>
 </html>

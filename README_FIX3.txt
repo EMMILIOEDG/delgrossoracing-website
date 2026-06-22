@@ -1,0 +1,1 @@
+FIX3: Adds real static article pages in /post/<slug>/ so articles no longer depend on JavaScript loading. Upload the whole folder contents to GitHub top level. Commit and clear cache deploy in Netlify.
